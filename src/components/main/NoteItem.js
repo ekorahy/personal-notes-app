@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItemBody from "./NoteItemBody";
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function NoteItem({ id, title, createdAt, body}) {
     return (

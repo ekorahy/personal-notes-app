@@ -1,7 +1,7 @@
 import React from "react";
 import { MdUnarchive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function UnarchiveButton({ id, onUnarchive }) {
     const navigate = useNavigate();

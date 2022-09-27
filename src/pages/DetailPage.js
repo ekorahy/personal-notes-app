@@ -1,7 +1,12 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import NoteDetail from "../components/main/NoteDetail";
-import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/local-data';
+import { 
+    getNote, 
+    deleteNote, 
+    archiveNote, 
+    unarchiveNote 
+} from "../utils/local-data";
 
 function DetailPageWrapper() {
     const { id } = useParams();
@@ -38,7 +43,11 @@ class DetailPage extends React.Component {
     render() {
         return (
             <div>
-                <NoteDetail {...this.state.note} onDelete={deleteNote} onArchive={archiveNote} onUnarchive={unarchiveNote} />
+                <NoteDetail
+                 {...this.state.note} 
+                 onDelete={deleteNote} 
+                 onArchive={archiveNote} 
+                 onUnarchive={unarchiveNote} />
             </div>
         );
     }

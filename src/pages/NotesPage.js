@@ -3,14 +3,14 @@ import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
 import { deleteNote, getActiveNotes } from "../utils/local-data";
-import { CgNotes } from 'react-icons/cg';
+import { CgNotes } from "react-icons/cg";
 import ButtonLink from "../components/main/ButtonLink";
 import { MdAdd } from "react-icons/md";
 
 function NotesPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const keyword = searchParams.get('keyword');
+    const keyword = searchParams.get("keyword");
 
     function changeSearchParams(keyword) {
         setSearchParams({ keyword });
@@ -25,7 +25,7 @@ class NotesPage extends React.Component {
 
         this.state = {
             notes: getActiveNotes(),
-            keyword: props.defaultKeyword || '',
+            keyword: props.defaultKeyword || "",
         }
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -72,7 +72,7 @@ class NotesPage extends React.Component {
                 }
                 <ButtonLink 
                  link={"/add"}
-                 className="btn btn-success floating-button-right p-3 mx-2 text-white fw-400" 
+                 className="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
                  label={<MdAdd style={{fontSize: "24px"}} />} 
                  title="Add New Note" />
             </div>

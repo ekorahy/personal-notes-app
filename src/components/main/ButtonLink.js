@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function ButtonLink({ link, label, ...rest }) {
     return (

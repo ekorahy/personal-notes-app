@@ -5,15 +5,13 @@ class NoteInput extends React.Component {
     constructor(props) {
         super(props);
 
-        // inisialisasi state
         this.state = {
-            title: '',
-            body: '',
+            title: "",
+            body: "",
             arhived: false,
-            createdAt: '',
+            createdAt: "",
         }
 
-        // binding
         this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
         this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
         this.onSubmitChangeEventHandler = this.onSubmitChangeEventHandler.bind(this);
@@ -42,10 +40,10 @@ class NoteInput extends React.Component {
 
     render() {
         return (
-            <div id='NoteInput' style={{marginTop: "150px", marginBottom: "150px"}}>
-              <h2 className='fs-2 text-center fw-bold text-info'>Add New Note</h2>
-              <form className='mb-5' onSubmit={this.onSubmitChangeEventHandler}>
-                  <div className='container w-75'>
+            <div id="NoteInput" style={{marginTop: "150px", marginBottom: "150px"}}>
+              <h2 className="fs-2 text-center fw-bold text-info">Add New Note</h2>
+              <form className="mb-5" onSubmit={this.onSubmitChangeEventHandler}>
+                  <div className="container w-75">
                     <div class="mb-3">
                         <label for="title" className="form-label">Title</label>
                         <input type="text"
@@ -66,7 +64,7 @@ class NoteInput extends React.Component {
                          required ></textarea>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button className='btn btn-info p-2 text-white w-100'>Submit</button>
+                        <button className="btn btn-info p-2 text-white w-100">Submit</button>
                     </div>
                   </div>
               </form>

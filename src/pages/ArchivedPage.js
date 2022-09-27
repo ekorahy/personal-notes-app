@@ -3,12 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
 import { deleteNote, getArchivedNotes } from "../utils/local-data";
-import { RiArchiveDrawerLine } from 'react-icons/ri';
+import { RiArchiveDrawerLine } from "react-icons/ri";
 
 function ArchivedPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const keyword = searchParams.get('keyword');
+    const keyword = searchParams.get("keyword");
 
     function changeSearchParams(keyword) {
         setSearchParams({ keyword });
@@ -23,7 +23,7 @@ class ArchivedPage extends React.Component {
 
         this.state = {
             notes: getArchivedNotes(),
-            keyword: props.defaultKeyword || '',
+            keyword: props.defaultKeyword || "",
         }
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);

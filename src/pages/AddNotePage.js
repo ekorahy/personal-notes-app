@@ -8,7 +8,7 @@ function AddNotePage() {
 
     function onAddNoteHandler(note) {
         addNote(note);
-        navigate('/notes')
+        navigate("/notes")
     }
 
     return (

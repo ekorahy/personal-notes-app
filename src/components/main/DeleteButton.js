@@ -1,7 +1,7 @@
 import React from "react";
-import { FiTrash } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { FiTrash } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function DeleteButton({ id, onDelete }) {
     const navigate = useNavigate();

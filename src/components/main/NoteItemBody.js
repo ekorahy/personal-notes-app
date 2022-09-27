@@ -1,6 +1,6 @@
 import React from "react";
-import { showFormattedDate } from '../../utils/index';
-import PropTypes from 'prop-types';
+import { showFormattedDate } from "../../utils/index";
+import PropTypes from "prop-types";
 
 function NoteItemBody({ createdAt, body }) {
     return (
