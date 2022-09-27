@@ -32,6 +32,7 @@ class NotesPage extends React.Component {
                     <NoteList props={this.state.notes.length} notes={this.state.notes} onDelete={this.onDeleteHandler} />
                     : <div className="text-center">Data Kosong</div>
                 }
+                
             </div>
         );
     }

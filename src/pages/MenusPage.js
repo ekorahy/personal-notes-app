@@ -1,7 +1,6 @@
 import React from "react";
 import ButtonLink from "../components/main/ButtonLink";
 import UrlImage from "../components/main/UrlImage";
-import HomeImg from "../assets/images/illustration_home.png";
 import MenusImg from "../assets/images/illustration_menus.png";
 
 function MenusPage() {

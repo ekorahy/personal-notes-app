@@ -8,7 +8,7 @@ function NoteDetail({ id, title, createdAt, body, archived, onDelete, onArchive,
     return (
         <div>
             <h2>{title}</h2>
-            <p>Created At: {showFormattedDate(createdAt)}</p>
+            <p>{showFormattedDate(createdAt)}</p>
             <p>{body}</p>
             <DeleteButton id={id} onDelete={onDelete} />
             {
