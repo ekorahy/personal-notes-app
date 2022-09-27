@@ -1,6 +1,7 @@
 import React from "react";
 import { FiTrash } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function DeleteButton({ id, onDelete }) {
     const navigate = useNavigate();
@@ -15,6 +16,11 @@ function DeleteButton({ id, onDelete }) {
         }}
         ><FiTrash style={{fontSize: "24px"}} /></button>
     );
+}
+
+DeleteButton.propTypes = {
+    id: PropTypes.string.isRequired,
+    onDelete: PropTypes.func.isRequired,
 }
 
 export default DeleteButton;

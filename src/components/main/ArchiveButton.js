@@ -1,6 +1,7 @@
 import React from "react";
 import { MdArchive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function ArchiveButton({ id, onArchive }) {
     const navigate = useNavigate();
@@ -15,6 +16,11 @@ function ArchiveButton({ id, onArchive }) {
         }}
         ><MdArchive style={{fontSize: "24px"}} /></button>
     );
+}
+
+ArchiveButton.propTypes = {
+    id: PropTypes.string.isRequired,
+    onArchive: PropTypes.func.isRequired,
 }
 
 export default ArchiveButton;

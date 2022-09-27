@@ -1,6 +1,7 @@
 import React from "react";
 import { MdUnarchive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function UnarchiveButton({ id, onUnarchive }) {
     const navigate = useNavigate();
@@ -15,6 +16,11 @@ function UnarchiveButton({ id, onUnarchive }) {
         }}
         ><MdUnarchive style={{fontSize: "24px"}} /></button>
     );
+}
+
+UnarchiveButton.propTypes = {
+    id: PropTypes.string.isRequired,
+    onUnarchive: PropTypes.func.isRequired,
 }
 
 export default UnarchiveButton;
