@@ -2,11 +2,11 @@ import React from "react";
 
 function SearchBar({ keyword, keywordChange }) {
     return (
-        <div class="container input-group w-75 mt-4">
+        <div class="input-group w-100 mt-4">
             <input
              type="search" 
-             class="form-control rounded" 
-             placeholder="Search" 
+             class="form-control rounded form-control-lg" 
+             placeholder="Search by Title ..." 
              aria-label="Search" 
              aria-describedby="search-addon" 
              value={keyword} 

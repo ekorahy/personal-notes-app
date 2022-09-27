@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
 import { deleteNote, getArchivedNotes } from "../utils/local-data";
+import { RiArchiveDrawerLine } from 'react-icons/ri';
 
 function ArchivedPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -57,13 +58,15 @@ class ArchivedPage extends React.Component {
         });
 
         return (
-            <div className="container my-5">
-                <h2>Archived List</h2>
-                <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
+            <div className="container" style={{marginTop: "140px"}}>
+                <div style={{marginLeft: "20px", paddingRight: "20px"}}>
+                    <h2><RiArchiveDrawerLine /> Archive Notes</h2>
+                    <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
+                </div>
                 {
                     this.state.notes.length !== 0 ?
                     <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
-                    : <div className="text-center my-4">Data Kosong</div>
+                    : <div className="text-center my-4 text-danger">- No Archived Note -</div>
                 }
             </div>
         );

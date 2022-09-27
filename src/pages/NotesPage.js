@@ -3,6 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
 import { deleteNote, getActiveNotes } from "../utils/local-data";
+import { CgNotes } from 'react-icons/cg';
+import ButtonLink from "../components/main/ButtonLink";
+import { MdAdd } from "react-icons/md";
 
 function NotesPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -57,15 +60,21 @@ class NotesPage extends React.Component {
         });
 
         return (
-            <div className="container my-5">
-                <h2>Notes List</h2>
-                <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
+            <div className="container" style={{marginTop: "140px"}}>
+                <div style={{marginLeft: "20px", paddingRight: "20px"}}>
+                    <h2><CgNotes /> Active Notes</h2>
+                    <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
+                </div>
                 {
                     this.state.notes.length !== 0 ?
                     <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
-                    : <div className="text-center">Data Kosong</div>
+                    : <div className="text-center my-4 text-danger">- No Active Note -</div>
                 }
-                
+                <ButtonLink 
+                 link={"/add"}
+                 className="btn btn-success floating-button-right p-3 mx-2 text-white fw-400" 
+                 label={<MdAdd style={{fontSize: "24px"}} />} 
+                 title="Add New Note" />
             </div>
         );
     }

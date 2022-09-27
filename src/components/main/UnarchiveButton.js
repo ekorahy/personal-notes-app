@@ -1,5 +1,5 @@
 import React from "react";
-import { FiArrowUp } from "react-icons/fi";
+import { MdUnarchive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 function UnarchiveButton({ id, onUnarchive }) {
@@ -7,12 +7,13 @@ function UnarchiveButton({ id, onUnarchive }) {
     return (
         <button
          type="button" 
-         class="btn btn-warning" 
+         class="btn btn-primary floating-button-right p-3 mx-2 text-white fw-400" 
+         title="Unarchive Note"
          onClick={() => { 
             onUnarchive(id);
             navigate("/archived");
         }}
-        ><FiArrowUp /></button>
+        ><MdUnarchive style={{fontSize: "24px"}} /></button>
     );
 }
 

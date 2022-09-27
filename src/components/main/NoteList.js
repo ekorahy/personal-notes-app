@@ -3,11 +3,11 @@ import NoteItem from "./NoteItem";
 
 function NoteList({ notes, onDelete }) {
     return (
-        <div className="container my-5">
-            <div className="row row-cols-2 gy-3 gx-3">
+        <div className="container mb-5 mt-4">
+            <div className="d-flex flex-wrap mx-auto">
                 {
                     notes.map((note) => (
-                        <div className="col">
+                        <div className="p-2 col-12 col-md-6 col-lg-4">
                             <NoteItem 
                             key={note.id}
                             id={note.id}

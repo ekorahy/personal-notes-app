@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
     return (
         <>
             <div className="text-center p-4" style={{backgroundColor: "rgba(0, 0, 0, 0.05);"}}>
-                © 2022 Copyright: <a class="text-reset fw-bold" href="/">Personal Notes App</a> by Ekorahy
+                © 2022 Copyright <Link to="/" className="text-reset text-decoration-none fw-bold">Personal Notes App</Link> by Ekorahy
             </div>
         </>
     );

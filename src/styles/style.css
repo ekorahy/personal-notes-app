@@ -3,17 +3,27 @@
 html,
 body,
 #root {
-  height: 100%;
   font-family: 'Quicksand', sans-serif;
 }
 
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.floating-button-left {
+  position: fixed;
+  bottom: 30px;
+  right: 80px;
+  border-radius: 50%;
+}
+
+.floating-button-right {
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  border-radius: 50%;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { FiArrowDown } from "react-icons/fi";
+import { MdArchive } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 function ArchiveButton({ id, onArchive }) {
@@ -7,12 +7,13 @@ function ArchiveButton({ id, onArchive }) {
     return (
         <button
          type="button" 
-         class="btn btn-success" 
+         class="btn btn-warning floating-button-right p-3 mx-2 text-white fw-400" 
+         title="Archive Note"
          onClick={() => { 
             onArchive(id);
             navigate("/notes");
         }}
-        ><FiArrowDown /></button>
+        ><MdArchive style={{fontSize: "24px"}} /></button>
     );
 }
 

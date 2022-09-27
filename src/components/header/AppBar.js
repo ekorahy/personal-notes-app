@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function AppBar() {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={{backgroundColor: "#fff"}}>
                 <div className="container d-flex">
                     <Link className='navbar-brand mx-3 flex-grow-1' to="/">
                         <UrlImage src={Logo} alt={"Logo Personal Notes App"} width="50" height="50" className="d-inline-block align-center" />

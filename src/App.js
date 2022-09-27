@@ -15,7 +15,7 @@ function App() {
       <header>
         <AppBar />
       </header>
-      <main>
+      <main style={{marginTop: "90px"}}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menus" element={<MenusPage />} />
@@ -25,7 +25,7 @@ function App() {
           <Route path="/add" element={<AddNotePage />} />
         </Routes>
       </main>
-      <footer className="text-center text-lg-start bg-light text-muted">
+      <footer className="text-center text-lg-start bg-light text-muted" style={{marginBottom: "0"}}>
         <Footer />
       </footer>
     </div>
