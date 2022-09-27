@@ -5,6 +5,7 @@ import AppBar from './components/header/AppBar';
 import AddNotePage from './pages/AddNotePage';
 import ArchivedPageWrapper from './pages/ArchivedPage';
 import DetailPage from './pages/DetailPage';
+import PageNotFound from './pages/Error404';
 import HomePage from './pages/HomePage';
 import MenusPage from './pages/MenusPage';
 import NotesPageWrapper from './pages/NotesPage';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/archived" element={<ArchivedPageWrapper />} />
           <Route path="notes/:id" element={<DetailPage />} />
           <Route path="/add" element={<AddNotePage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <footer className="text-center text-lg-start bg-light text-muted" style={{marginBottom: "0"}}>

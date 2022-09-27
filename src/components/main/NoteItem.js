@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 function NoteItem({ id, title, createdAt, body}) {
     return (
         <div className="card" style={{width: "18rem;"}}>
-            <div className="card-body">
+            <div className="card-body p-4">
                 <Link to={`/notes/${id}`}
                  className="card-title text-decoration-none h5 fw-bold text-info" 
-                 style={{marginLeft: "14px"}}>{title}
+                 >{title}
                 </Link>
                 <NoteItemBody title={title} createdAt={createdAt} body={body} />
             </div>
