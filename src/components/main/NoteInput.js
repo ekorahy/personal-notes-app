@@ -44,8 +44,8 @@ class NoteInput extends React.Component {
               <h2 className="fs-2 text-center fw-bold text-info">Add New Note</h2>
               <form className="mb-5" onSubmit={this.onSubmitChangeEventHandler}>
                   <div className="container w-75">
-                    <div class="mb-3">
-                        <label for="title" className="form-label">Title</label>
+                    <div className="mb-3">
+                        <label htmlFor="title" className="form-label">Title</label>
                         <input type="text"
                          className="form-control" 
                          id="title" 
@@ -53,10 +53,10 @@ class NoteInput extends React.Component {
                          onChange={this.onTitleChangeEventHandler} 
                          required />
                     </div>
-                    <div class="mb-3">
-                        <label for="body" class="form-label">Body</label>
+                    <div className="mb-3">
+                        <label htmlFor="body" className="form-label">Body</label>
                         <textarea
-                         class="form-control"
+                         className="form-control"
                          id="body" 
                          rows="3" 
                          value={this.state.body} 

@@ -8,7 +8,7 @@ function ArchiveButton({ id, onArchive }) {
     return (
         <button
          type="button" 
-         class="btn btn-warning floating-button-right p-3 mx-2 text-white fw-400" 
+         className="btn btn-warning floating-button-right p-3 mx-2 text-white fw-400" 
          title="Archive Note"
          onClick={() => { 
             onArchive(id);

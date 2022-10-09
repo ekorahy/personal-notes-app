@@ -2,6 +2,7 @@ import React from "react";
 import ButtonLink from "../components/main/ButtonLink";
 import UrlImage from "../components/main/UrlImage";
 import HomeImg from "../assets/images/illustration_home.png";
+import { HiArrowRight } from "react-icons/hi";
 
 function HomePage() {
     return (
@@ -10,7 +11,7 @@ function HomePage() {
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div className="col-10 col-sm-8 col-lg-6">
                 <UrlImage
-                 src={HomeImg} 
+                 urlImg={HomeImg} 
                  alt="Home Ilustration Image" 
                  className="d-block mx-lg-auto img-fluid" 
                  width="700" 
@@ -25,8 +26,9 @@ function HomePage() {
                     <p tabIndex={0} className="fw-lighter fs-6">
                         Makes it easier for you to store and manage your personal notes.</p>
                     <ButtonLink
-                     link="/menus" 
+                     link="/menus"
                      label="Get Started" 
+                     icon={<HiArrowRight />} 
                      className="btn btn-info px-4 text-white fw-400" 
                      style={{padding: "10px 0"}} />
                 </div>

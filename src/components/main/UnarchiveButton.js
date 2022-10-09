@@ -8,7 +8,7 @@ function UnarchiveButton({ id, onUnarchive }) {
     return (
         <button
          type="button" 
-         class="btn btn-primary floating-button-right p-3 mx-2 text-white fw-400" 
+         className="btn btn-primary floating-button-right p-3 mx-2 text-white fw-400" 
          title="Unarchive Note"
          onClick={() => { 
             onUnarchive(id);

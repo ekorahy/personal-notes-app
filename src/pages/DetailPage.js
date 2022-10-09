@@ -7,6 +7,7 @@ import {
     archiveNote, 
     unarchiveNote 
 } from "../utils/local-data";
+import PageNotFound from "./Error404";
 
 function DetailPageWrapper() {
     const { id } = useParams();
@@ -41,6 +42,15 @@ class DetailPage extends React.Component {
     }
 
     render() {
+
+        if (this.state.note === undefined) {
+            return (
+                <div>
+                    <PageNotFound />
+                </div>
+            )
+        }
+
         return (
             <div>
                 <NoteDetail

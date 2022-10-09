@@ -13,34 +13,34 @@ function MenusPage() {
                 <div className="col flex-lg-row align-items-center g-5 py-5">
                     <div className="row-10 row-sm-8 row-lg-6">
                         <UrlImage
-                        src={MenusImg} 
-                        alt="Menus Ilustration Image" 
-                        className="d-block mx-lg-auto img-fluid mx-auto" 
-                        width="230" 
-                        height="130" 
-                        loading="lazy" />
+                         urlImg={MenusImg} 
+                         alt="Menus Ilustration Image" 
+                         className="d-block mx-lg-auto img-fluid mx-auto" 
+                         width="230" 
+                         height="130" 
+                         loading="lazy" />
                     </div>
                     <div className="row-lg-6">
                         <p tabIndex={0} className="fw-lighter fs-6 text-center mt-3 fw-bold">Choose Menu</p>
                         <div className="d-flex justify-content-center flex-wrap">
                             <ButtonLink
-                            link="/add" 
-                            label={<AiOutlineFileAdd style={{fontSize: "24px"}} />} 
-                            className="btn btn-success px-5 mb-2 text-white fw-400" 
-                            style={{padding: '10px 0', margin: '0 10px 0 0'}} 
-                            title="Add New Note" />
+                             link="/add" 
+                             icon={<AiOutlineFileAdd style={{fontSize: "24px"}} />} 
+                             className="btn btn-success px-5 mb-2 text-white fw-400" 
+                             style={{padding: '10px 0', margin: '0 10px 0 0'}} 
+                             title="Add New Note" />
                             <ButtonLink
-                            link="/notes" 
-                            label={<CgNotes style={{fontSize: "24px"}} />} 
-                            className="btn btn-info px-5 mb-2 text-white fw-400" 
-                            style={{padding: '10px 0', margin: '0 10px 0 0'}} 
-                            title="View Notes" />
+                             link="/notes" 
+                             icon={<CgNotes style={{fontSize: "24px"}} />} 
+                             className="btn btn-info px-5 mb-2 text-white fw-400" 
+                             style={{padding: '10px 0', margin: '0 10px 0 0'}} 
+                             title="View Notes" />
                             <ButtonLink
-                            link="/archived" 
-                            label={<RiArchiveDrawerLine style={{fontSize: "24px"}} />} 
-                            className="btn btn-warning px-5 mb-2 text-white fw-400" 
-                            style={{padding: '10px 0', margin: '0 10px 0 0'}} 
-                            title="View Archived" />
+                             link="/archived" 
+                             icon={<RiArchiveDrawerLine style={{fontSize: "24px"}} />} 
+                             className="btn btn-warning px-5 mb-2 text-white fw-400" 
+                             style={{padding: '10px 0', margin: '0 10px 0 0'}} 
+                             title="View Archived" />
                         </div>
                     </div>
                 </div>

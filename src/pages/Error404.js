@@ -7,7 +7,7 @@ function PageNotFound() {
     return (
         <div className="container">
             <UrlImage
-             src={Error404} 
+             urlImg={Error404} 
              alt="Home Ilustration Image" 
              className="d-block mx-lg-auto img-fluid mx-auto" 
              width="500px" 

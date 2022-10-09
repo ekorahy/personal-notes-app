@@ -24,7 +24,7 @@ function App() {
           <Route path="/archived" element={<ArchivedPageWrapper />} />
           <Route path="notes/:id" element={<DetailPage />} />
           <Route path="/add" element={<AddNotePage />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </main>
       <footer className="text-center text-lg-start bg-light text-muted" style={{marginBottom: "0"}}>

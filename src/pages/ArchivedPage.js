@@ -4,6 +4,7 @@ import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
 import { deleteNote, getArchivedNotes } from "../utils/local-data";
 import { RiArchiveDrawerLine } from "react-icons/ri";
+import PropTypes from 'prop-types';
 
 function ArchivedPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -71,6 +72,15 @@ class ArchivedPage extends React.Component {
             </div>
         );
     }
+}
+
+ArchivedPageWrapper.propTypes = {
+    changeSearchParams: PropTypes.func,
+}
+
+ArchivedPage.propTypes = {
+    defaultKeyword: PropTypes.string,
+    keywordChange: PropTypes.func.isRequired,
 }
 
 export default ArchivedPageWrapper;

@@ -12,7 +12,7 @@ function NoteItemBody({ createdAt, body }) {
 }
 
 NoteItemBody.propTypes = {
-    createdAt: PropTypes.bool.isRequired,
+    createdAt: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
 }
 

@@ -8,13 +8,11 @@ function NoteList({ notes, onDelete }) {
             <div className="d-flex flex-wrap mx-auto">
                 {
                     notes.map((note) => (
-                        <div className="p-2 col-12 col-md-6 col-lg-4">
-                            <NoteItem 
-                            key={note.id}
-                            id={note.id}
-                            onDelete={onDelete}
-                            {...note} />
-                        </div>
+                        <NoteItem 
+                         key={note.id}
+                         id={note.id}
+                         onDelete={onDelete}
+                         {...note} />
                     ))
                 }
             </div>

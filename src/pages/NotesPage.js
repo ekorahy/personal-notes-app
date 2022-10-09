@@ -6,6 +6,7 @@ import { deleteNote, getActiveNotes } from "../utils/local-data";
 import { CgNotes } from "react-icons/cg";
 import ButtonLink from "../components/main/ButtonLink";
 import { MdAdd } from "react-icons/md";
+import PropTypes from "prop-types";
 
 function NotesPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -73,11 +74,20 @@ class NotesPage extends React.Component {
                 <ButtonLink 
                  link={"/add"}
                  className="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
-                 label={<MdAdd style={{fontSize: "24px"}} />} 
+                 icon={<MdAdd style={{fontSize: "24px"}} />} 
                  title="Add New Note" />
             </div>
         );
     }
+}
+
+NotesPageWrapper.propTypes = {
+    changeSearchParams: PropTypes.func,
+}
+
+NotesPage.propTypes = {
+    defaultKeyword: PropTypes.string,
+    keywordChange: PropTypes.func.isRequired,
 }
 
 export default NotesPageWrapper;

@@ -10,7 +10,7 @@ function AppBar() {
                 <div className="container d-flex">
                     <Link className="navbar-brand mx-3 flex-grow-1" to="/">
                         <UrlImage
-                         src={Logo} 
+                         urlImg={Logo} 
                          alt={"Logo Personal Notes App"} 
                          width="50" 
                          height="50" 
