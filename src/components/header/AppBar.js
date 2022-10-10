@@ -36,9 +36,9 @@ function AppBar({ logout, name }) {
                             <Link className="nav-link me-4 fw-bold" to="/archived">Archived</Link>
                         </div>
                     </div>
-                    <div className="collapse navbar-collapse justify-content-end">
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <button className="btn btn-link text-danger fw-bold" onClick={logout}>{name} <FiLogOut /></button>
+                            <button className="btn btn-link nav-link me-4 text-danger fw-bold" onClick={logout}>{name} <FiLogOut /></button>
                         </div>
                     </div>
                 </div>

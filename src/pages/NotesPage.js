@@ -2,11 +2,11 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
-import { deleteNote, getActiveNotes } from "../utils/local-data";
 import { CgNotes } from "react-icons/cg";
 import ButtonLink from "../components/main/ButtonLink";
 import { MdAdd } from "react-icons/md";
 import PropTypes from "prop-types";
+import { deleteNote, getActiveNotes } from '../utils/network-data';
 
 function NotesPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +25,7 @@ class NotesPage extends React.Component {
         super(props);
 
         this.state = {
-            notes: getActiveNotes(),
+            notes: [],
             keyword: props.defaultKeyword || "",
         }
 
@@ -33,12 +33,23 @@ class NotesPage extends React.Component {
         this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
     }
 
-    onDeleteHandler(id) {
-        deleteNote(id); 
+    async componentDidMount() {
+        const { data } = await getActiveNotes();
 
         this.setState(() => {
             return {
-                notes: getActiveNotes(),
+                notes: data,
+            }
+        })
+    }
+
+    async onDeleteHandler(id) {
+        await deleteNote(id); 
+
+        const { data } = await getActiveNotes();
+        this.setState(() => {
+            return {
+                notes: data,
             }
         });
     }

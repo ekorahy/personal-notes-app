@@ -5,26 +5,26 @@ import {
     getNote, 
     deleteNote, 
     archiveNote, 
-    unarchiveNote 
-} from "../utils/local-data";
+    unarchiveNote, 
+} from "../utils/network-data";
 import PageNotFound from "./Error404";
 
 function DetailPageWrapper() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    function onDeleteHandler(id) {
-        deleteNote(id);
+    async function onDeleteHandler(id) {
+        await deleteNote(id);
         navigate("/notes");
     }
 
-    function onArchiveHandler(id) {
-        archiveNote(id);
+    async function onArchiveHandler(id) {
+        await archiveNote(id);
         navigate("/notes");
     }
 
-    function onUnarchiveHandler(id) {
-        unarchiveNote(id);
+    async function onUnarchiveHandler(id) {
+        await unarchiveNote(id);
         navigate("/archived");
     }
 
@@ -34,7 +34,7 @@ function DetailPageWrapper() {
 class DetailPage extends React.Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             note: getNote(props.id),
         };
