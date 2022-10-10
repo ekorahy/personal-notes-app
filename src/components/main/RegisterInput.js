@@ -54,12 +54,15 @@ class RegisterInput extends React.Component {
     onSubmitHandler(event) {
         event.preventDefault();
 
-        this.props.register({
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            confirmPassword: this.state.confirmPassword,
-        });
+        if (this.state.password !== this.state.confirmPassword) {
+            alert('Password must same !!!');
+        } else {
+            this.props.register({
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+            });
+        }
     }
 
     render() {
