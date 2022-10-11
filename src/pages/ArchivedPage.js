@@ -2,7 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import NoteList from "../components/main/NoteList";
 import SearchBar from "../components/main/SearchBar";
-import { deleteNote, getArchivedNotes } from "../utils/local-data";
+import { deleteNote, getArchivedNotes } from "../utils/network-data";
 import { RiArchiveDrawerLine } from "react-icons/ri";
 import PropTypes from 'prop-types';
 
@@ -23,7 +23,7 @@ class ArchivedPage extends React.Component {
         super(props);
 
         this.state = {
-            notes: getArchivedNotes(),
+            notes: [],
             keyword: props.defaultKeyword || "",
         }
 
@@ -31,8 +31,18 @@ class ArchivedPage extends React.Component {
         this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
     }
 
-    onDeleteHandler(id) {
-        deleteNote(id); 
+    async componentDidMount() {
+        const { data } = await getArchivedNotes();
+
+        this.setState(() => {
+            return {
+                notes: data,
+            }
+        })
+    }
+
+    async onDeleteHandler(id) {
+        await deleteNote(id); 
 
         this.setState(() => {
             return {

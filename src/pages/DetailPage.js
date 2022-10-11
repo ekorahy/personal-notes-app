@@ -36,9 +36,17 @@ class DetailPage extends React.Component {
         super(props);
         
         this.state = {
-            note: getNote(props.id),
+            note: null,
         };
-        
+    }
+
+    async componentDidMount() {
+        const note = await getNote(this.props.id);
+        this.setState(() => {
+            return {
+                note: note.data,
+            }
+        })
     }
 
     render() {
@@ -54,7 +62,7 @@ class DetailPage extends React.Component {
         return (
             <div>
                 <NoteDetail
-                 {...this.state.note} 
+                 {...this.state.note}
                  onDelete={deleteNote} 
                  onArchive={archiveNote} 
                  onUnarchive={unarchiveNote} />
