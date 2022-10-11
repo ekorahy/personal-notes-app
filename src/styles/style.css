@@ -6,6 +6,11 @@ body,
   font-family: 'Quicksand', sans-serif;
 }
 
+[data-theme='dark'] {
+  --font-color: #eee;
+  --background-color: #333;
+}
+
 .card-text {
   display: -webkit-box;
   -webkit-line-clamp: 2;

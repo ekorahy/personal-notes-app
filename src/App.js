@@ -12,6 +12,7 @@ import MenusPage from './pages/MenusPage';
 import NotesPageWrapper from './pages/NotesPage';
 import RegisterPage from './pages/RegisterPage';
 import { getUserLogged, putAccessToken } from './utils/network-data';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,14 @@ class App extends React.Component {
     this.state = {
       authedUser: null,
       initializing: true,
+      theme: 'dark',
+      toggleTheme: () => {
+        this.setState((prevState) => {
+          return {
+            theme: prevState.theme === 'dark' ? 'white' : 'dark'
+          }
+        })
+      }
     };
 
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
@@ -65,36 +74,38 @@ class App extends React.Component {
 
     if (this.state.authedUser === null) {
       return (
-        <>
+        <ThemeProvider value={this.state}>
           <main className='d-flex aligns-items-center justify-content-center mt-5' style={{height: '100%'}}>
-            <Routes>
-              <Route path='/*' element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
-              <Route path='/register' element={<RegisterPage />} />
-            </Routes>
-          </main>
-        </>
+              <Routes>
+                <Route path='/*' element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
+                <Route path='/register' element={<RegisterPage />} />
+              </Routes>
+            </main>
+        </ThemeProvider>
       )
     }
     return (
-      <div>
-        <header>
-          <AppBar logout={this.onLogout} name={this.state.authedUser.name} />
-        </header>
-        <main style={{marginTop: "90px"}}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/menus" element={<MenusPage />} />
-            <Route path="/notes" element={<NotesPageWrapper />} />
-            <Route path="/archived" element={<ArchivedPageWrapper />} />
-            <Route path="notes/:id" element={<DetailPage />} />
-            <Route path="/add" element={<AddNotePage />} />
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </main>
-        <footer className="text-center text-lg-start bg-light text-muted" style={{marginBottom: "0"}}>
-          <Footer />
-        </footer>
-      </div>
+      <ThemeProvider value={this.state}>
+        <div className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'}`}>
+          <header>
+            <AppBar logout={this.onLogout} name={this.state.authedUser.name} />
+          </header>
+          <main style={{paddingTop: "90px"}} className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'}`}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/menus" element={<MenusPage />} />
+              <Route path="/notes" element={<NotesPageWrapper />} />
+              <Route path="/archived" element={<ArchivedPageWrapper />} />
+              <Route path="notes/:id" element={<DetailPage />} />
+              <Route path="/add" element={<AddNotePage />} />
+              <Route path="/*" element={<PageNotFound />} />
+            </Routes>
+          </main>
+          <footer className={`text-center text-lg-start bg-${this.state.theme === 'dark' ? 'light' : 'dark'} text-muted`}>
+            <Footer />
+          </footer>
+        </div>
+      </ThemeProvider>
     )
   }
 }

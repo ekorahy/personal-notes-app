@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ThemeConsumer } from '../../contexts/ThemeContext';
 
 class NoteInput extends React.Component {
     constructor(props) {
@@ -40,35 +41,41 @@ class NoteInput extends React.Component {
 
     render() {
         return (
-            <div id="NoteInput" style={{marginTop: "150px", marginBottom: "150px"}}>
-              <h2 className="fs-2 text-center fw-bold text-info">Add New Note</h2>
-              <form className="mb-5" onSubmit={this.onSubmitChangeEventHandler}>
-                  <div className="container w-75">
-                    <div className="mb-3">
-                        <label htmlFor="title" className="form-label">Title</label>
-                        <input type="text"
-                         className="form-control" 
-                         id="title" 
-                         value={this.state.title} 
-                         onChange={this.onTitleChangeEventHandler} 
-                         required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="body" className="form-label">Body</label>
-                        <textarea
-                         className="form-control"
-                         id="body" 
-                         rows="3" 
-                         value={this.state.body} 
-                         onChange={this.onBodyChangeEventHandler}
-                         required ></textarea>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                        <button className="btn btn-info p-2 text-white w-100">Submit</button>
-                    </div>
-                  </div>
-              </form>
-            </div>
+            <ThemeConsumer>
+                {({ theme }) => {
+                    return (
+                        <div id="NoteInput" style={{marginTop: "150px", marginBottom: "150px"}}>
+                            <h2 className="fs-2 text-center fw-bold text-info">Form Add New Note</h2>
+                            <form className="mb-5" onSubmit={this.onSubmitChangeEventHandler}>
+                                <div className="container w-75">
+                                    <div className="mb-3">
+                                        <label htmlFor="title" className={`form-label text-${theme}`}>Title</label>
+                                        <input type="text"
+                                        className={`form-control rounded form-control-lg bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        id="title" 
+                                        value={this.state.title} 
+                                        onChange={this.onTitleChangeEventHandler} 
+                                        required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="body" className={`form-label text-${theme}`}>Body</label>
+                                        <textarea
+                                        className={`form-control rounded form-control-lg bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`}
+                                        id="body" 
+                                        rows="3" 
+                                        value={this.state.body} 
+                                        onChange={this.onBodyChangeEventHandler}
+                                        required ></textarea>
+                                    </div>
+                                    <div className="d-flex justify-content-center">
+                                        <button className="btn btn-info p-2 text-white w-100">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                    )
+                }}
+            </ThemeConsumer>
         );
     }
 }

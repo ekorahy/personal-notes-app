@@ -5,6 +5,7 @@ import SearchBar from "../components/main/SearchBar";
 import { deleteNote, getArchivedNotes } from "../utils/network-data";
 import { RiArchiveDrawerLine } from "react-icons/ri";
 import PropTypes from 'prop-types';
+import { ThemeConsumer } from '../contexts/ThemeContext';
 
 function ArchivedPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -69,17 +70,23 @@ class ArchivedPage extends React.Component {
         });
 
         return (
-            <div className="container" style={{marginTop: "140px"}}>
-                <div style={{marginLeft: "20px", paddingRight: "20px"}}>
-                    <h2><RiArchiveDrawerLine /> Archive Notes</h2>
-                    <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
-                </div>
-                {
-                    this.state.notes.length !== 0 ?
-                    <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
-                    : <div className="text-center my-4 text-danger">- No Archived Note -</div>
-                }
-            </div>
+            <ThemeConsumer>
+                {({ theme }) => {
+                    return (
+                        <div className="container" style={{marginTop: "140px"}}>
+                            <div style={{marginLeft: "20px", paddingRight: "20px"}}>
+                                <h2 className={`text-${theme}`}><RiArchiveDrawerLine /> Archive Notes</h2>
+                                <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
+                            </div>
+                            {
+                                this.state.notes.length !== 0 ?
+                                <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
+                                : <div className="text-center my-4 text-danger">- No Archived Note -</div>
+                            }
+                        </div>
+                    )
+                }}
+            </ThemeConsumer>
         );
     }
 }

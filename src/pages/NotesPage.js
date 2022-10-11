@@ -7,6 +7,7 @@ import ButtonLink from "../components/main/ButtonLink";
 import { MdAdd } from "react-icons/md";
 import PropTypes from "prop-types";
 import { deleteNote, getActiveNotes } from '../utils/network-data';
+import { ThemeConsumer } from '../contexts/ThemeContext';
 
 function NotesPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -72,22 +73,28 @@ class NotesPage extends React.Component {
         });
 
         return (
-            <div className="container" style={{marginTop: "140px"}}>
-                <div style={{marginLeft: "20px", paddingRight: "20px"}}>
-                    <h2><CgNotes /> Active Notes</h2>
-                    <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
-                </div>
-                {
-                    this.state.notes.length !== 0 ?
-                    <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
-                    : <div className="text-center my-4 text-danger">- No Active Note -</div>
-                }
-                <ButtonLink 
-                 link={"/add"}
-                 className="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
-                 icon={<MdAdd style={{fontSize: "24px"}} />} 
-                 title="Add New Note" />
-            </div>
+            <ThemeConsumer>
+                {({ theme }) => {
+                    return (
+                        <div className="container" style={{marginTop: "140px"}}>
+                            <div style={{marginLeft: "20px", paddingRight: "20px"}}>
+                                <h2 className={`text-${theme}`}><CgNotes /> Active Notes</h2>
+                                <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
+                            </div>
+                            {
+                                this.state.notes.length !== 0 ?
+                                <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
+                                : <div className="text-center my-4 text-danger">- No Active Note -</div>
+                            }
+                            <ButtonLink 
+                            link={"/add"}
+                            className="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
+                            icon={<MdAdd style={{fontSize: "24px"}} />} 
+                            title="Add New Note" />
+                        </div>
+                    )
+                }}
+            </ThemeConsumer>
         );
     }
 }
