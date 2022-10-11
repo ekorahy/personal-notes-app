@@ -13,6 +13,7 @@ import NotesPageWrapper from './pages/NotesPage';
 import RegisterPage from './pages/RegisterPage';
 import { getUserLogged, putAccessToken } from './utils/network-data';
 import { ThemeProvider } from './contexts/ThemeContext';
+import AppBarUserAuthentication from './components/header/AppBarUserAuthentication';
 
 class App extends React.Component {
   constructor(props) {
@@ -75,18 +76,23 @@ class App extends React.Component {
     if (this.state.authedUser === null) {
       return (
         <ThemeProvider value={this.state}>
-          <main className='d-flex aligns-items-center justify-content-center mt-5' style={{height: '100%'}}>
-              <Routes>
-                <Route path='/*' element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
-                <Route path='/register' element={<RegisterPage />} />
-              </Routes>
+          <div className={`bg-${this.state.theme === 'white' ? 'dark' : 'white'}`}>
+            <header>
+              <AppBarUserAuthentication />
+            </header>
+            <main className='d-flex aligns-items-center justify-content-center mt-5' style={{paddingTop: "75px"}}>
+                <Routes>
+                  <Route path='/*' element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
+                  <Route path='/register' element={<RegisterPage />} />
+                </Routes>
             </main>
+          </div>
         </ThemeProvider>
       )
     }
     return (
       <ThemeProvider value={this.state}>
-        <div className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'}`}>
+        <div className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'} py-5`}>
           <header>
             <AppBar logout={this.onLogout} name={this.state.authedUser.name} />
           </header>

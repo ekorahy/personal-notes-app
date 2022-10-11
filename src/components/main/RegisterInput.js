@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { ThemeConsumer } from '../../contexts/ThemeContext';
 
 class RegisterInput extends React.Component {
     constructor(props) {
@@ -67,51 +68,57 @@ class RegisterInput extends React.Component {
 
     render() {
         return (
-            <div id="RegisterInput">
-                <form className="mb-5" onSubmit={this.onSubmitHandler}>
-                    <div>
-                        <div className="mb-3">
-                            <input type="text"
-                              className="form-control" 
-                              placeholder="Name"
-                              id="name" 
-                              value={this.state.name} 
-                              onChange={this.onNameChange} 
-                              required />
+            <ThemeConsumer>
+                {({theme}) => {
+                    return (
+                        <div id="RegisterInput">
+                            <form className="mb-5" onSubmit={this.onSubmitHandler}>
+                                <div>
+                                    <div className="mb-3">
+                                        <input type="text"
+                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        placeholder="Name"
+                                        id="name" 
+                                        value={this.state.name} 
+                                        onChange={this.onNameChange} 
+                                        required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <input type="email"
+                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        placeholder="Email"
+                                        id="email" 
+                                        value={this.state.email} 
+                                        onChange={this.onEmailChange} 
+                                        required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <input type="password"
+                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        placeholder="Password"
+                                        id="password" 
+                                        value={this.state.password} 
+                                        onChange={this.onPasswordChange} 
+                                        required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <input type="password"
+                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        placeholder="Confirm Password"
+                                        id="confirmPassword" 
+                                        value={this.state.confirmPassword} 
+                                        onChange={this.onConfirmPasswordChange} 
+                                        required />
+                                    </div>
+                                    <div className="d-flex justify-content-center">
+                                        <button className="btn btn-info p-2 text-white w-100">Register</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div className="mb-3">
-                            <input type="email"
-                              className="form-control" 
-                              placeholder="Email"
-                              id="email" 
-                              value={this.state.email} 
-                              onChange={this.onEmailChange} 
-                              required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="password"
-                              className="form-control" 
-                              placeholder="Password"
-                              id="password" 
-                              value={this.state.password} 
-                              onChange={this.onPasswordChange} 
-                              required />
-                        </div>
-                        <div className="mb-3">
-                            <input type="password"
-                              className="form-control" 
-                              placeholder="Confirm Password"
-                              id="confirmPassword" 
-                              value={this.state.confirmPassword} 
-                              onChange={this.onConfirmPasswordChange} 
-                              required />
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <button className="btn btn-info p-2 text-white w-100">Register</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    )
+                }}
+            </ThemeConsumer>
         )
     }
 }

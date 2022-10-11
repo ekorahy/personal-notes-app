@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { ThemeConsumer } from '../../contexts/ThemeContext';
 
 class LoginInput extends React.Component {
     constructor(props) {
@@ -42,33 +43,39 @@ class LoginInput extends React.Component {
 
     render() {
         return (
-            <div id="LoginInput">
-                <form className="mb-5" onSubmit={this.onSubmitHandler}>
-                    <div>
-                        <div className="mb-3">
-                            <input type="email"
-                              className="form-control" 
-                              placeholder="Email"
-                              id="email" 
-                              value={this.state.email} 
-                              onChange={this.onEmailChangehandler} 
-                              required />
+            <ThemeConsumer>
+                {({ theme }) => {
+                    return (
+                        <div id="LoginInput">
+                            <form className="mb-5" onSubmit={this.onSubmitHandler}>
+                                <div>
+                                    <div className="mb-3">
+                                        <input type="email"
+                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        placeholder="Email"
+                                        id="email" 
+                                        value={this.state.email} 
+                                        onChange={this.onEmailChangehandler} 
+                                        required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <input type="password"
+                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                                        placeholder="Password"
+                                        id="password" 
+                                        value={this.state.password} 
+                                        onChange={this.onPasswordChangeHandler} 
+                                        required />
+                                    </div>
+                                    <div className="d-flex justify-content-center">
+                                        <button className="btn btn-info p-2 text-white w-100">Login</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div className="mb-3">
-                            <input type="password"
-                              className="form-control" 
-                              placeholder="Password"
-                              id="password" 
-                              value={this.state.password} 
-                              onChange={this.onPasswordChangeHandler} 
-                              required />
-                        </div>
-                        <div className="d-flex justify-content-center">
-                            <button className="btn btn-info p-2 text-white w-100">Login</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    )
+                }}
+            </ThemeConsumer>
         );
     }
 }
