@@ -8,6 +8,7 @@ import {
     unarchiveNote, 
 } from "../utils/network-data";
 import PageNotFound from "./Error404";
+import Loading from "react-fullscreen-loading";
 
 function DetailPageWrapper() {
     const { id } = useParams();
@@ -50,6 +51,9 @@ class DetailPage extends React.Component {
     }
 
     render() {
+        if (this.state.note === null) {
+            return <Loading loading={true} background="#fff" loaderColor="#3498db" />;
+        }
 
         if (this.state.note === undefined) {
             return (

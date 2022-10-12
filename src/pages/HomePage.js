@@ -32,7 +32,7 @@ function HomePage() {
                                 link="/menus"
                                 label={language === 'id' ? 'Mulai' : 'Get Started'} 
                                 icon={<HiArrowRight />} 
-                                className="btn btn-info px-4 text-white fw-400" 
+                                className="btn btn-info px-4 py-2 text-white fw-400" 
                                 style={{padding: "10px 0"}} />
                             </div>
                         </div>

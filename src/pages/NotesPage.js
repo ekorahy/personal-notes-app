@@ -8,6 +8,7 @@ import { MdAdd } from "react-icons/md";
 import PropTypes from "prop-types";
 import { deleteNote, getActiveNotes } from '../utils/network-data';
 import { ThemeConsumer } from '../contexts/ThemeContext';
+import Loading from "react-fullscreen-loading";
 
 function NotesPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -28,6 +29,7 @@ class NotesPage extends React.Component {
         this.state = {
             notes: [],
             keyword: props.defaultKeyword || "",
+            loading: true,
         }
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -40,6 +42,7 @@ class NotesPage extends React.Component {
         this.setState(() => {
             return {
                 notes: data,
+                loading: false,
             }
         })
     }
@@ -71,6 +74,16 @@ class NotesPage extends React.Component {
                 this.state.keyword.toLowerCase()
             );
         });
+
+        if (this.state.loading) {
+            return (
+                <ThemeConsumer>
+                    {({ theme }) => {
+                        return <Loading loading={true} background={theme === 'dark' ? '#fff' : '#212529'} loaderColor="#0dcaf0" />;
+                    }}
+                </ThemeConsumer>
+            )
+        }
 
         return (
             <ThemeConsumer>

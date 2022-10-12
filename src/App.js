@@ -98,6 +98,7 @@ class App extends React.Component {
         </ThemeProvider>
       )
     }
+
     return (
       <ThemeProvider value={this.state}>
         <div className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'} `}>

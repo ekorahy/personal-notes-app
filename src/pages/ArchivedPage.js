@@ -6,6 +6,7 @@ import { deleteNote, getArchivedNotes } from "../utils/network-data";
 import { RiArchiveDrawerLine } from "react-icons/ri";
 import PropTypes from 'prop-types';
 import { ThemeConsumer } from '../contexts/ThemeContext';
+import Loading from "react-fullscreen-loading";
 
 function ArchivedPageWrapper() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -26,6 +27,7 @@ class ArchivedPage extends React.Component {
         this.state = {
             notes: [],
             keyword: props.defaultKeyword || "",
+            loading: true,
         }
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -38,6 +40,7 @@ class ArchivedPage extends React.Component {
         this.setState(() => {
             return {
                 notes: data,
+                loading: false,
             }
         })
     }
@@ -68,6 +71,16 @@ class ArchivedPage extends React.Component {
                 this.state.keyword.toLowerCase()
             );
         });
+
+        if (this.state.loading) {
+            return (
+                <ThemeConsumer>
+                    {({ theme }) => {
+                        return <Loading loading={true} background={theme === 'dark' ? '#fff' : '#212529'} loaderColor="#0dcaf0" />;
+                    }}
+                </ThemeConsumer>
+            )
+        }
 
         return (
             <ThemeConsumer>
