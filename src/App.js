@@ -92,7 +92,7 @@ class App extends React.Component {
     }
     return (
       <ThemeProvider value={this.state}>
-        <div className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'} py-5`}>
+        <div className={`bg-${this.state.theme === 'dark' ? 'white' : 'dark'} `}>
           <header>
             <AppBar logout={this.onLogout} name={this.state.authedUser.name} />
           </header>
@@ -107,7 +107,7 @@ class App extends React.Component {
               <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </main>
-          <footer className={`text-center text-lg-start bg-${this.state.theme === 'dark' ? 'light' : 'dark'} text-muted`}>
+          <footer className={`text-center text-lg-start bg-${this.state.theme === 'dark' ? 'light' : 'dark'} text-muted mb-0`}>
             <Footer />
           </footer>
         </div>
