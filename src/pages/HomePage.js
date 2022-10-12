@@ -8,7 +8,7 @@ import { ThemeConsumer } from '../contexts/ThemeContext';
 function HomePage() {
     return (
         <ThemeConsumer>
-            {({ theme }) => {
+            {({ theme, language }) => {
                 return (
                     <div className="container col-xxl-8 px-4 py-5">
                         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -25,12 +25,12 @@ function HomePage() {
                                 <h2
                                 tabIndex={0} 
                                 className={`display-5 fw-bold lh-1 mb-3 text-${theme}`}
-                                >Welcome to <span className="text-info">Personal Notes App</span></h2>
+                                >{language === 'id' ? 'Selamat datang di ' : 'Welcome to '}<span className="text-info">{language === 'id' ? 'Aplikasi Catatan Pribadi' : 'Personal Notes App'}</span></h2>
                                 <p tabIndex={0} className={`fw-lighter fs-6 text-${theme}`}>
-                                    Makes it easier for you to store and manage your personal notes.</p>
+                                    {language === 'id' ? 'Memudahkan Anda untuk menyimpan dan mengelola catatan pribadi Anda' : 'Makes it easier for you to store and manage your personal notes'}.</p>
                                 <ButtonLink
                                 link="/menus"
-                                label="Get Started" 
+                                label={language === 'id' ? 'Mulai' : 'Get Started'} 
                                 icon={<HiArrowRight />} 
                                 className="btn btn-info px-4 text-white fw-400" 
                                 style={{padding: "10px 0"}} />

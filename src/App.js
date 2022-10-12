@@ -23,10 +23,18 @@ class App extends React.Component {
       authedUser: null,
       initializing: true,
       theme: 'dark',
+      language: 'en',
       toggleTheme: () => {
         this.setState((prevState) => {
           return {
             theme: prevState.theme === 'dark' ? 'white' : 'dark'
+          }
+        })
+      },
+      toggleLanguage: () => {
+        this.setState((prevState) => {
+          return {
+            language: prevState.language === 'en' ? 'id' : 'en'
           }
         })
       }

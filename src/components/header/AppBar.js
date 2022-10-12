@@ -6,11 +6,12 @@ import { FiLogOut } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import ToggleTheme from "./ToggleTheme";
 import { ThemeConsumer } from "../../contexts/ThemeContext";
+import ToggleLanguage from "./ToggleLanguage";
 
 function AppBar({ logout, name }) {
     return (
         <ThemeConsumer>
-            {({ theme }) => {
+            {({ theme, language }) => {
                 return (
                     <nav 
                         className={`navbar navbar-expand-lg navbar-${theme} bg-${theme === 'white' ? 'dark' : 'white'} fixed-top`}>
@@ -35,14 +36,15 @@ function AppBar({ logout, name }) {
                             </button>
                             <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                                 <div className="navbar-nav ">
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/">Home</Link>
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/menus">Menus</Link>
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/notes">Notes</Link>
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/archived">Archived</Link>
+                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/">{language === 'id' ? 'Beranda' : 'Home'}</Link>
+                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/menus">{language === 'id' ? 'Menu' : 'Menus'}</Link>
+                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/notes">{language === 'id' ? 'Catatan' : 'Notes'}</Link>
+                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/archived">{language === 'id' ? 'Arsip' : 'Archived'}</Link>
                                 </div>
                             </div>
                             <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                                 <div className="navbar-nav">
+                                    <ToggleLanguage />
                                     <ToggleTheme />
                                     <button className="btn btn-link nav-link text-danger fw-bold" onClick={logout}>{name} <FiLogOut /></button>
                                 </div>
