@@ -10,9 +10,9 @@ function ToggleLanguage() {
                     <>
                         <button
                          onClick={toggleLanguage} 
-                         className={`btn btn-link nav-link me-1 text-${theme} fw-bold`}>
+                         className={`btn btn-link nav-link mx-2 text-${theme} fw-bold`}>
                             <MdGTranslate className={`text-${theme}`} /> {language}
-                        </button>;
+                        </button>
                     </>
                 )
             }}

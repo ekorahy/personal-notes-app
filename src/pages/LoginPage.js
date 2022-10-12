@@ -18,7 +18,7 @@ function LoginPage({ loginSuccess }) {
 
     return (
         <ThemeConsumer>
-            {({ theme }) => {
+            {({ theme, language }) => {
                 return (
                     <div>
                         <div className="container col-xxl-8 px-4 py-5">
@@ -34,11 +34,11 @@ function LoginPage({ loginSuccess }) {
                                 </div>
                                 <div className="col-lg-6">
                                     <div>
-                                        <h1 className="text-info fw-bold">Login Form</h1>
-                                        <p className={`text-${theme === 'dark' ? 'muted' : 'white'}`}>Please login to continue into the application.</p>
+                                        <h1 className="text-info fw-bold">{language === 'id' ? 'Formulir Masuk' : 'Login Form'}</h1>
+                                        <p className={`text-${theme === 'dark' ? 'muted' : 'white'}`}>{language === 'id' ? 'Silahkan login untuk melanjutkan ke dalam aplikasi' : 'Please login to continue into the application'}.</p>
                                     </div>
                                     <LoginInput login={onLogin} />
-                                    <p className={`text-${theme === 'dark' ? 'muted' : 'white'} text-center`}>Don't have an account yet ? <Link to='/register'>Register</Link></p>
+                                    <p className={`text-${theme === 'dark' ? 'muted' : 'white'} text-center`}>{language === 'id' ? 'Belum punya akun?' : 'Don\'t have an account?'} <Link to='/register'>{language === 'id' ? 'Daftar disini' : 'Register here'}</Link></p>
                                 </div>
                             </div>
                         </div>

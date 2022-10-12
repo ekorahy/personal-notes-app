@@ -69,7 +69,7 @@ class RegisterInput extends React.Component {
     render() {
         return (
             <ThemeConsumer>
-                {({theme}) => {
+                {({ theme, language }) => {
                     return (
                         <div id="RegisterInput">
                             <form className="mb-5" onSubmit={this.onSubmitHandler}>
@@ -77,7 +77,7 @@ class RegisterInput extends React.Component {
                                     <div className="mb-3">
                                         <input type="text"
                                         className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder="Name"
+                                        placeholder={language === 'id' ? 'Nama' : 'Name'}
                                         id="name" 
                                         value={this.state.name} 
                                         onChange={this.onNameChange} 
@@ -95,7 +95,7 @@ class RegisterInput extends React.Component {
                                     <div className="mb-3">
                                         <input type="password"
                                         className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder="Password"
+                                        placeholder={language === 'id' ? 'Kata Sandi' : 'Password'}
                                         id="password" 
                                         value={this.state.password} 
                                         onChange={this.onPasswordChange} 
@@ -104,14 +104,14 @@ class RegisterInput extends React.Component {
                                     <div className="mb-3">
                                         <input type="password"
                                         className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder="Confirm Password"
+                                        placeholder={language === 'id' ? 'Konfigurasi Kata Sandi' : 'Confirm Password'}
                                         id="confirmPassword" 
                                         value={this.state.confirmPassword} 
                                         onChange={this.onConfirmPasswordChange} 
                                         required />
                                     </div>
                                     <div className="d-flex justify-content-center">
-                                        <button className="btn btn-info p-2 text-white w-100">Register</button>
+                                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Daftar' : 'Register'}</button>
                                     </div>
                                 </div>
                             </form>

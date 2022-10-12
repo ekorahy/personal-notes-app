@@ -42,14 +42,14 @@ class NoteInput extends React.Component {
     render() {
         return (
             <ThemeConsumer>
-                {({ theme }) => {
+                {({ theme, language }) => {
                     return (
                         <div id="NoteInput" style={{marginTop: "150px", marginBottom: "150px"}}>
-                            <h2 className="fs-2 text-center fw-bold text-info">Form Add New Note</h2>
+                            <h2 className="fs-2 text-center fw-bold text-info">{language === 'id' ? 'Formulir Tambah Catatan Baru' : 'Add New Note Form'}</h2>
                             <form className="mb-5" onSubmit={this.onSubmitChangeEventHandler}>
                                 <div className="container w-75">
                                     <div className="mb-3">
-                                        <label htmlFor="title" className={`form-label text-${theme}`}>Title</label>
+                                        <label htmlFor="title" className={`form-label text-${theme}`}>{language === 'id' ? 'Judul' : 'Title'}</label>
                                         <input type="text"
                                         className={`form-control rounded form-control-lg bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
                                         id="title" 
@@ -58,7 +58,7 @@ class NoteInput extends React.Component {
                                         required />
                                     </div>
                                     <div className="mb-3">
-                                        <label htmlFor="body" className={`form-label text-${theme}`}>Body</label>
+                                        <label htmlFor="body" className={`form-label text-${theme}`}>{language === 'id' ? 'Isi' : 'Body'}</label>
                                         <textarea
                                         className={`form-control rounded form-control-lg bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`}
                                         id="body" 
@@ -68,7 +68,7 @@ class NoteInput extends React.Component {
                                         required ></textarea>
                                     </div>
                                     <div className="d-flex justify-content-center">
-                                        <button className="btn btn-info p-2 text-white w-100">Submit</button>
+                                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Kirim' : 'Submit'}</button>
                                     </div>
                                 </div>
                             </form>

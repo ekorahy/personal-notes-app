@@ -44,7 +44,7 @@ class LoginInput extends React.Component {
     render() {
         return (
             <ThemeConsumer>
-                {({ theme }) => {
+                {({ theme, language }) => {
                     return (
                         <div id="LoginInput">
                             <form className="mb-5" onSubmit={this.onSubmitHandler}>
@@ -61,14 +61,14 @@ class LoginInput extends React.Component {
                                     <div className="mb-3">
                                         <input type="password"
                                         className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder="Password"
+                                        placeholder={language === 'id' ? 'Kata Sandi' : 'Password'}
                                         id="password" 
                                         value={this.state.password} 
                                         onChange={this.onPasswordChangeHandler} 
                                         required />
                                     </div>
                                     <div className="d-flex justify-content-center">
-                                        <button className="btn btn-info p-2 text-white w-100">Login</button>
+                                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Masuk' : 'Login'}</button>
                                     </div>
                                 </div>
                             </form>

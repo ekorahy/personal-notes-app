@@ -31,19 +31,19 @@ function MenusPage() {
                                     icon={<AiOutlineFileAdd style={{fontSize: "24px"}} />} 
                                     className="btn btn-outline-success px-5 mb-2 fw-400" 
                                     style={{padding: '10px 0', margin: '0 10px 0 0'}} 
-                                    title={language === 'id' ? 'Tambah Catatan Baru' : 'Add New Note'} />
+                                    title={language === 'id' ? 'Tambah catatan baru' : 'Add new note'} />
                                     <ButtonLink
                                     link="/notes" 
                                     icon={<CgNotes style={{fontSize: "24px"}} />} 
                                     className="btn btn-outline-info px-5 mb-2 fw-400" 
                                     style={{padding: '10px 0', margin: '0 10px 0 0'}} 
-                                    title={language === 'id' ? 'Lihat Catatan' : 'View Notes'} />
+                                    title={language === 'id' ? 'Lihat catatan' : 'View notes'} />
                                     <ButtonLink
                                     link="/archived" 
                                     icon={<RiArchiveDrawerLine style={{fontSize: "24px"}} />} 
                                     className="btn btn-outline-warning px-5 mb-2 fw-400" 
                                     style={{padding: '10px 0', margin: '0 10px 0 0'}} 
-                                    title={language === 'id' ? 'Lihat Arsip' : 'View Archived'} />
+                                    title={language === 'id' ? 'Lihat arsip' : 'View archived'} />
                                 </div>
                             </div>
                         </div>

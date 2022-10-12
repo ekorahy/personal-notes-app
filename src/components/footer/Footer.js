@@ -5,12 +5,12 @@ import { ThemeConsumer } from "../../contexts/ThemeContext";
 function Footer() {
     return (
         <ThemeConsumer>
-            {({ theme }) => {
+            {({ theme, language }) => {
                 return (
-                    <p className="text-center p-4 mb-0">Copyright © 2022-   
+                    <p className="text-center p-4 mb-0">{language === 'id' ? 'Hak Cipta' : 'Copyright'} © 2022-   
                       <Link to="/"
                         className={`text-${theme === 'dark' ? 'dark' : 'white'} text-decoration-none fw-bold`}>
-                          Personal Notes App</Link> by Ekorahy
+                          {language === 'id' ? 'Aplikasi Catatan Pribadi' : 'Personal Notes App'}</Link> {language === 'id' ? 'oleh' : 'by'} Ekorahy
                     </p>
                 )
             }}

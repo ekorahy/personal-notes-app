@@ -27,7 +27,7 @@ function HomePage() {
                                 className={`display-5 fw-bold lh-1 mb-3 text-${theme}`}
                                 >{language === 'id' ? 'Selamat datang di ' : 'Welcome to '}<span className="text-info">{language === 'id' ? 'Aplikasi Catatan Pribadi' : 'Personal Notes App'}</span></h2>
                                 <p tabIndex={0} className={`fw-lighter fs-6 text-${theme}`}>
-                                    {language === 'id' ? 'Memudahkan Anda untuk menyimpan dan mengelola catatan pribadi Anda' : 'Makes it easier for you to store and manage your personal notes'}.</p>
+                                    {language === 'id' ? 'Memudahkan Anda untuk menyimpan dan mengelola catatan pribadi' : 'Makes it easier for you to store and manage your personal notes'}.</p>
                                 <ButtonLink
                                 link="/menus"
                                 label={language === 'id' ? 'Mulai' : 'Get Started'} 

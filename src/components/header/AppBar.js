@@ -14,7 +14,7 @@ function AppBar({ logout, name }) {
             {({ theme, language }) => {
                 return (
                     <nav 
-                        className={`navbar navbar-expand-lg navbar-${theme} bg-${theme === 'white' ? 'dark' : 'white'} fixed-top`}>
+                        className={`navbar navbar-expand-lg navbar-${theme === 'dark' ? 'light' : 'dark'} bg-${theme === 'white' ? 'dark' : 'white'} fixed-top`}>
                         <div className="container d-flex">
                             <Link className="navbar-brand mx-3 flex-grow-1" to="/">
                                 <UrlImage
@@ -25,7 +25,7 @@ function AppBar({ logout, name }) {
                                 className="d-inline-block align-center" />
                             </Link>
                             <button
-                            className={`navbar-toggler bg-${theme}`}
+                            className={`navbar-toggler`}
                             type="button" 
                             data-bs-toggle="collapse" 
                             data-bs-target="#navbarNavAltMarkup" 
@@ -35,11 +35,11 @@ function AppBar({ logout, name }) {
                             <span className='navbar-toggler-icon'></span>
                             </button>
                             <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-                                <div className="navbar-nav ">
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/">{language === 'id' ? 'Beranda' : 'Home'}</Link>
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/menus">{language === 'id' ? 'Menu' : 'Menus'}</Link>
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/notes">{language === 'id' ? 'Catatan' : 'Notes'}</Link>
-                                    <Link className={`nav-link me-4 fw-bold text-${theme}`} to="/archived">{language === 'id' ? 'Arsip' : 'Archived'}</Link>
+                                <div className="navbar-nav text-center">
+                                    <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/">{language === 'id' ? 'Beranda' : 'Home'}</Link>
+                                    <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/menus">{language === 'id' ? 'Menu' : 'Menus'}</Link>
+                                    <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/notes">{language === 'id' ? 'Catatan' : 'Notes'}</Link>
+                                    <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/archived">{language === 'id' ? 'Terarsip' : 'Archived'}</Link>
                                 </div>
                             </div>
                             <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">

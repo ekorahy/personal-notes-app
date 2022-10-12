@@ -74,23 +74,23 @@ class NotesPage extends React.Component {
 
         return (
             <ThemeConsumer>
-                {({ theme }) => {
+                {({ theme, language }) => {
                     return (
                         <div className="container" style={{marginTop: "140px"}}>
                             <div style={{marginLeft: "20px", paddingRight: "20px"}}>
-                                <h2 className={`text-${theme}`}><CgNotes /> Active Notes</h2>
+                                <h2 className={`text-${theme}`}><CgNotes /> {language === 'id' ? 'Catatan Aktif' : 'Active Notes'}</h2>
                                 <SearchBar keyword={this.state.keyword} keywordChange={this.onKeywordChangeHandler} />
                             </div>
                             {
                                 this.state.notes.length !== 0 ?
                                 <NoteList props={this.state.notes.length} notes={notes} onDelete={this.onDeleteHandler} />
-                                : <div className="text-center my-4 text-danger">- No Active Note -</div>
+                                : <div className="text-center my-4 text-danger">- {language === 'id' ? 'Tidak ada catatan' : 'No notes'} -</div>
                             }
                             <ButtonLink 
                             link={"/add"}
                             className="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
                             icon={<MdAdd style={{fontSize: "24px"}} />} 
-                            title="Add New Note" />
+                            title={language === 'id' ? 'Tambah catatan baru' : 'Add new note'} />
                         </div>
                     )
                 }}
