@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import RegisterInput from "../components/main/RegisterInput";
 import UrlImage from "../components/main/UrlImage";
 import RegisterImg from '../assets/images/register_img.png';
-import { register } from '../utils/network-data';
-import { ThemeConsumer } from '../contexts/ThemeContext';
+import { register } from '../utils/api';
+import LocaleContext from "../contexts/LocaleContext";
 
 function RegisterPage() {
     const navigate = useNavigate();
+    const { theme, language } = React.useContext(LocaleContext);
 
     async function onRegisterHandler(user) {
         const { error } = await register(user);
@@ -17,35 +18,29 @@ function RegisterPage() {
     }
 
     return (
-        <ThemeConsumer>
-            {({ theme, language }) => {
-                return (
-                    <div>
-                        <div className="container col-xxl-8 px-4 py-5">
-                            <div className="row flex-lg-row-reverse align-items-center g-5">
-                            <div className="col-10 col-sm-8 col-lg-6">
-                            <UrlImage
-                            urlImg={RegisterImg} 
-                            alt="Home Ilustration Image" 
-                            className="d-block mx-lg-auto img-fluid" 
-                            width="450" 
-                            height="400" 
-                            loading="lazy" />
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="">
-                                    <h1 className="text-info fw-bold">{language === 'id' ? 'Formulir Pendaftaran' : 'Register Form'}</h1>
-                                    <p className={`text-${theme === 'dark' ? 'muted' : 'white'}`}>{language === 'id' ? 'Silakan daftarkan identitas Anda' : 'Please register your identity'}.</p>
-                                </div>
-                                <RegisterInput register={onRegisterHandler} />
-                                <p className={`text-${theme === 'dark' ? 'muted' : 'white'} text-center`}>{language === 'id' ? 'Sudah punya akun' : 'Already have an account'} ? <Link to='/'>login</Link></p>
-                            </div>
-                            </div>
-                        </div>
+        <div>
+            <div className="container col-xxl-8 px-4 py-5">
+                <div className="row flex-lg-row-reverse align-items-center g-5">
+                <div className="col-10 col-sm-8 col-lg-6">
+                <UrlImage
+                urlImg={RegisterImg} 
+                alt="Home Ilustration Image" 
+                className="d-block mx-lg-auto img-fluid" 
+                width="450" 
+                height="400" 
+                loading="lazy" />
+                </div>
+                <div className="col-lg-6">
+                    <div className="">
+                        <h1 className="text-info fw-bold">{language === 'id' ? 'Formulir Pendaftaran' : 'Register Form'}</h1>
+                        <p className={`text-${theme === 'dark' ? 'muted' : 'white'}`}>{language === 'id' ? 'Silakan daftarkan identitas Anda' : 'Please register your identity'}.</p>
                     </div>
-                )
-            }}
-        </ThemeConsumer>
+                    <RegisterInput register={onRegisterHandler} />
+                    <p className={`text-${theme === 'dark' ? 'muted' : 'white'} text-center`}>{language === 'id' ? 'Sudah punya akun' : 'Already have an account'} ? <Link to='/'>login</Link></p>
+                </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

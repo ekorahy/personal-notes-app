@@ -6,13 +6,24 @@ import {
     deleteNote, 
     archiveNote, 
     unarchiveNote, 
-} from "../utils/network-data";
+} from "../utils/api";
 import PageNotFound from "./Error404";
 import Loading from "react-fullscreen-loading";
+import LocaleContext from "../contexts/LocaleContext";
 
-function DetailPageWrapper() {
+function DetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const [note, setNote] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const { theme } = React.useContext(LocaleContext);
+
+    React.useEffect(() => {
+        getNote(id).then(({ data }) => {
+            setNote(data);
+            setIsLoading(false);
+        })
+    }, [id]);
 
     async function onDeleteHandler(id) {
         await deleteNote(id);
@@ -29,50 +40,35 @@ function DetailPageWrapper() {
         navigate("/archived");
     }
 
-    return <DetailPage id={id} onDelete={onDeleteHandler} onArchive={onArchiveHandler} onUnarchive={onUnarchiveHandler} />;
+    return (
+        <>
+            {
+                (() => {
+                    if (isLoading) {
+                        return <Loading loading={true} background={theme === 'dark' ? '#fff' : '#212529'} loaderColor="#0dcaf0" />;
+                    }
+
+                    if (note === null) {
+                        return (
+                            <div>
+                                <PageNotFound />;
+                            </div>
+                        )
+                    }
+
+                    return (
+                        <div>
+                            <NoteDetail
+                            {...note}
+                            onDelete={onDeleteHandler} 
+                            onArchive={onArchiveHandler} 
+                            onUnarchive={onUnarchiveHandler} />
+                        </div>
+                    )
+                })()   
+            }  
+        </>
+    )
 }
 
-class DetailPage extends React.Component {
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            note: null,
-        };
-    }
-
-    async componentDidMount() {
-        const note = await getNote(this.props.id);
-        this.setState(() => {
-            return {
-                note: note.data,
-            }
-        })
-    }
-
-    render() {
-        if (this.state.note === null) {
-            return <Loading loading={true} background="#fff" loaderColor="#3498db" />;
-        }
-
-        if (this.state.note === undefined) {
-            return (
-                <div>
-                    <PageNotFound />
-                </div>
-            )
-        }
-
-        return (
-            <div>
-                <NoteDetail
-                 {...this.state.note}
-                 onDelete={deleteNote} 
-                 onArchive={archiveNote} 
-                 onUnarchive={unarchiveNote} />
-            </div>
-        );
-    }
-}
-
-export default DetailPageWrapper;
+export default DetailPage;

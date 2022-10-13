@@ -1,83 +1,51 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { ThemeConsumer } from '../../contexts/ThemeContext';
+import LocaleContext from "../../contexts/LocaleContext";
+import useInput from "../../hooks/useInput";
 
-class LoginInput extends React.Component {
-    constructor(props) {
-        super(props);
+function LoginInput({ login }) {
+    const [email, onEmailChangehandler] = useInput('');
+    const [password, onPasswordChangeHandler] = useInput('');
+    const { theme, language } = React.useContext(LocaleContext);
 
-        this.state = {
-            email: '',
-            password: '',
-        };
-
-        this.onEmailChangehandler = this.onEmailChangehandler.bind(this);
-        this.onPasswordChangeHandler = this.onPasswordChangeHandler.bind(this);
-        this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    }
-
-    onEmailChangehandler(event) {
-        this.setState(() => {
-            return {
-                email: event.target.value
-            }
-        })
-    }
-
-    onPasswordChangeHandler(event) {
-        this.setState(() => {
-            return {
-                password: event.target.value
-            }
-        })
-    }
-
-    onSubmitHandler(event) {
+    const onSubmitHandler = (event) => {
         event.preventDefault();
 
-        this.props.login({
-            email: this.state.email,
-            password: this.state.password,
+        login({
+            email: email,
+            password: password,
         });
     }
 
-    render() {
-        return (
-            <ThemeConsumer>
-                {({ theme, language }) => {
-                    return (
-                        <div id="LoginInput">
-                            <form className="mb-5" onSubmit={this.onSubmitHandler}>
-                                <div>
-                                    <div className="mb-3">
-                                        <input type="email"
-                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder="Email"
-                                        id="email" 
-                                        value={this.state.email} 
-                                        onChange={this.onEmailChangehandler} 
-                                        required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <input type="password"
-                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder={language === 'id' ? 'Kata Sandi' : 'Password'}
-                                        id="password" 
-                                        value={this.state.password} 
-                                        onChange={this.onPasswordChangeHandler} 
-                                        required />
-                                    </div>
-                                    <div className="d-flex justify-content-center">
-                                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Masuk' : 'Login'}</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    )
-                }}
-            </ThemeConsumer>
-        );
-    }
+    return (
+        <div id="LoginInput">
+            <form className="mb-5" onSubmit={onSubmitHandler}>
+                <div>
+                    <div className="mb-3">
+                        <input type="email"
+                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                        placeholder="Email"
+                        id="email" 
+                        value={email} 
+                        onChange={onEmailChangehandler} 
+                        required />
+                    </div>
+                    <div className="mb-3">
+                        <input type="password"
+                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                        placeholder={language === 'id' ? 'Kata Sandi' : 'Password'}
+                        id="password" 
+                        value={password} 
+                        onChange={onPasswordChangeHandler} 
+                        required />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Masuk' : 'Login'}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
 }
 
 LoginInput.propTypes = {

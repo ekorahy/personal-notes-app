@@ -1,126 +1,74 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { ThemeConsumer } from '../../contexts/ThemeContext';
+import LocaleContext from "../../contexts/LocaleContext";
+import useInput from "../../hooks/useInput";
 
-class RegisterInput extends React.Component {
-    constructor(props) {
-        super(props)
+function RegisterInput({ register }) {
+    const [name, onNameChange] = useInput('');
+    const [email, onEmailChange] = useInput('');
+    const [password, onPasswordChange] = useInput('');
+    const [confirmPassword, onConfirmPasswordChange] = useInput('');
+    const { theme, language } = React.useContext(LocaleContext);
 
-        this.state = {
-            name: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-        }
-
-        this.onNameChange = this.onNameChange.bind(this);
-        this.onEmailChange = this.onEmailChange.bind(this);
-        this.onPasswordChange = this.onPasswordChange.bind(this);
-        this.onConfirmPasswordChange = this.onConfirmPasswordChange.bind(this);
-        this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    }
-
-    onNameChange(event) {
-        this.setState(() => {
-            return {
-                name: event.target.value,
-            }
-        })
-    }
-
-    onEmailChange(event) {
-        this.setState(() => {
-            return {
-                email: event.target.value,
-            }
-        })
-    }
-
-    onPasswordChange(event) {
-        this.setState(() => {
-            return {
-                password: event.target.value,
-            }
-        })
-    }
-
-    onConfirmPasswordChange(event) {
-        this.setState(() => {
-            return {
-                confirmPassword: event.target.value,
-            }
-        })
-    }
-
-    onSubmitHandler(event) {
+    const onSubmitHandler = (event) => {
         event.preventDefault();
 
-        if (this.state.password !== this.state.confirmPassword) {
-            alert('Password must same !!!');
-        } else {
-            this.props.register({
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password,
-            });
-        }
+        password !== confirmPassword ? alert('Password must same !!!')
+        : register({
+            name: name,
+            email: email,
+            password: password,
+        });
+        
     }
 
-    render() {
-        return (
-            <ThemeConsumer>
-                {({ theme, language }) => {
-                    return (
-                        <div id="RegisterInput">
-                            <form className="mb-5" onSubmit={this.onSubmitHandler}>
-                                <div>
-                                    <div className="mb-3">
-                                        <input type="text"
-                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder={language === 'id' ? 'Nama' : 'Name'}
-                                        id="name" 
-                                        value={this.state.name} 
-                                        onChange={this.onNameChange} 
-                                        required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <input type="email"
-                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder="Email"
-                                        id="email" 
-                                        value={this.state.email} 
-                                        onChange={this.onEmailChange} 
-                                        required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <input type="password"
-                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder={language === 'id' ? 'Kata Sandi' : 'Password'}
-                                        id="password" 
-                                        value={this.state.password} 
-                                        onChange={this.onPasswordChange} 
-                                        required />
-                                    </div>
-                                    <div className="mb-3">
-                                        <input type="password"
-                                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
-                                        placeholder={language === 'id' ? 'Konfigurasi Kata Sandi' : 'Confirm Password'}
-                                        id="confirmPassword" 
-                                        value={this.state.confirmPassword} 
-                                        onChange={this.onConfirmPasswordChange} 
-                                        required />
-                                    </div>
-                                    <div className="d-flex justify-content-center">
-                                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Daftar' : 'Register'}</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    )
-                }}
-            </ThemeConsumer>
-        )
-    }
+    return (
+        <div id="RegisterInput">
+            <form className="mb-5" onSubmit={onSubmitHandler}>
+                <div>
+                    <div className="mb-3">
+                        <input type="text"
+                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                        placeholder={language === 'id' ? 'Nama' : 'Name'}
+                        id="name" 
+                        value={name} 
+                        onChange={onNameChange} 
+                        required />
+                    </div>
+                    <div className="mb-3">
+                        <input type="email"
+                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                        placeholder="Email"
+                        id="email" 
+                        value={email} 
+                        onChange={onEmailChange} 
+                        required />
+                    </div>
+                    <div className="mb-3">
+                        <input type="password"
+                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                        placeholder={language === 'id' ? 'Kata Sandi' : 'Password'}
+                        id="password" 
+                        value={password} 
+                        onChange={onPasswordChange} 
+                        required />
+                    </div>
+                    <div className="mb-3">
+                        <input type="password"
+                        className={`form-control rounded bg-${theme === 'dark' ? 'white' : 'dark'} text-${theme}`} 
+                        placeholder={language === 'id' ? 'Konfigurasi Kata Sandi' : 'Confirm Password'}
+                        id="confirmPassword" 
+                        value={confirmPassword} 
+                        onChange={onConfirmPasswordChange} 
+                        required />
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <button className="btn btn-info p-2 text-white w-100">{language === 'id' ? 'Daftar' : 'Register'}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    )
 }
 
 RegisterInput.propTypes = {
