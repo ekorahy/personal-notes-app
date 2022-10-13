@@ -6,6 +6,7 @@ import UrlImage from "../components/main/UrlImage";
 import LoginImg from '../assets/images/login_img.png';
 import { login } from '../utils/api';
 import LocaleContext from "../contexts/LocaleContext";
+import Swal from 'sweetalert2';
 
 function LoginPage({ loginSuccess }) {
     const { theme, language } = React.useContext(LocaleContext);
@@ -15,6 +16,19 @@ function LoginPage({ loginSuccess }) {
 
         if (!error) {
             loginSuccess(data);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'You have successfully logged in!',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Login failed!'
+            })
         }
     }
 

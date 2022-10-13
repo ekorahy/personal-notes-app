@@ -1,11 +1,10 @@
 import React from "react";
 import { MdArchive } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import LocaleContext from "../../contexts/LocaleContext";
+import Swal from 'sweetalert2';
 
 function ArchiveButton({ id, onArchive }) {
-    const navigate = useNavigate();
     const { language } = React.useContext(LocaleContext);
     return (
         <button
@@ -14,7 +13,13 @@ function ArchiveButton({ id, onArchive }) {
             title={language === 'id' ? 'Arsipkan' : 'Archived'}
             onClick={() => { 
                 onArchive(id);
-                navigate("/notes");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Personal Notes successfully archived!',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
             }}
         ><MdArchive style={{fontSize: "24px"}} /></button>
     );

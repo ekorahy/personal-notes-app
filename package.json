@@ -10,7 +10,8 @@
     "react-fullscreen-loading": "^0.0.4",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.4.1",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "sweetalert2": "^11.5.1"
   },
   "scripts": {
     "start": "react-scripts start",

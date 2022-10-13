@@ -1,11 +1,10 @@
 import React from "react";
 import { MdUnarchive } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import LocaleContext from "../../contexts/LocaleContext";
+import Swal from 'sweetalert2';
 
 function UnarchiveButton({ id, onUnarchive }) {
-    const navigate = useNavigate();
     const { language } = React.useContext(LocaleContext);
     return (
         <button
@@ -14,7 +13,13 @@ function UnarchiveButton({ id, onUnarchive }) {
             title={language === 'id' ? 'Aktifkan' : 'Activate'}
             onClick={() => { 
                 onUnarchive(id);
-                navigate("/archived");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Personal Notes successfully unarchived!',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
             }}
         ><MdUnarchive style={{fontSize: "24px"}} /></button>
     );

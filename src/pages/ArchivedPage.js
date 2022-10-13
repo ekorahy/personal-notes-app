@@ -47,7 +47,7 @@ function ArchivedPage() {
                 :
                 <div className="container" style={{marginTop: "90px"}}>
                     <div style={{marginLeft: "20px", paddingRight: "20px"}}>
-                        <h2 className={`text-${theme}`}><RiArchiveDrawerLine /> {language === 'id' ? 'Catatan Aktif' : 'Active Notes'}</h2>
+                        <h2 className={`text-${theme}`}><RiArchiveDrawerLine /> {language === 'id' ? 'Catatan Terarsip' : 'Archived Notes'}</h2>
                         <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
                     </div>
                     {

@@ -14,7 +14,7 @@ import LocaleContext from './contexts/LocaleContext';
 import AppBarUserAuthentication from './components/header/AppBarUserAuthentication';
 import NotesPage from './pages/NotesPage';
 import ArchivedPage from './pages/ArchivedPage';
-
+import Swal from 'sweetalert2';
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -61,8 +61,26 @@ function App() {
   }
 
   function onLogout() {
-    setAuthedUser(null);
-    putAccessToken('');
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to log out?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, I want to log out!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setAuthedUser(null);
+        putAccessToken('');
+        Swal.fire(
+          'Log out!',
+          'You have successfully logged out.',
+          'success'
+        )
+      }
+    })
+    
   }
 
   return (

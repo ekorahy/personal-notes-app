@@ -5,6 +5,7 @@ import UrlImage from "../components/main/UrlImage";
 import RegisterImg from '../assets/images/register_img.png';
 import { register } from '../utils/api';
 import LocaleContext from "../contexts/LocaleContext";
+import Swal from 'sweetalert2';
 
 function RegisterPage() {
     const navigate = useNavigate();
@@ -13,7 +14,18 @@ function RegisterPage() {
     async function onRegisterHandler(user) {
         const { error } = await register(user);
         if (!error) {
+            Swal.fire(
+                'Successful Registration',
+                'Your account has been successfully registered!',
+                'success'
+            )
             navigate('/');
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Registration failed!'
+            })
         }
     }
 
