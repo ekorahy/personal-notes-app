@@ -8,8 +8,8 @@ function ToggleLanguage() {
         <>
             <button
                 onClick={toggleLanguage} 
-                className='btn btn-link nav-link mx-2 text-primary fw-bold'>
-                <MdGTranslate className='text-primary '/> {language}
+                className='btn btn-link nav-link mx-2 text-info fw-bold'>
+                <MdGTranslate className='text-info'/> {language}
             </button>
         </>
     )

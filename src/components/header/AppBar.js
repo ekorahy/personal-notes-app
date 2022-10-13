@@ -35,7 +35,6 @@ function AppBar({ logout, name }) {
                 <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                     <div className="navbar-nav text-center">
                         <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/">{language === 'id' ? 'Beranda' : 'Home'}</Link>
-                        <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/menus">{language === 'id' ? 'Menu' : 'Menus'}</Link>
                         <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/notes">{language === 'id' ? 'Catatan' : 'Notes'}</Link>
                         <Link className={`nav-link mx-2 fw-bold text-${theme}`} to="/archived">{language === 'id' ? 'Terarsip' : 'Archived'}</Link>
                     </div>

@@ -7,7 +7,6 @@ import DetailPage from './pages/DetailPage';
 import PageNotFound from './pages/Error404';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import MenusPage from './pages/MenusPage';
 import RegisterPage from './pages/RegisterPage';
 import { getUserLogged, putAccessToken } from './utils/api';
 import LocaleContext from './contexts/LocaleContext';
@@ -97,7 +96,7 @@ function App() {
                 <header>
                   <AppBarUserAuthentication />
                 </header>
-                <main className='d-flex aligns-items-center justify-content-center mt-5' style={{paddingTop: "75px"}}>
+                <main className='d-flex aligns-items-center justify-content-center mt-5'>
                     <Routes>
                       <Route path='/*' element={<LoginPage loginSuccess={onLoginSuccess} />} />
                       <Route path='/register' element={<RegisterPage />} />
@@ -117,7 +116,6 @@ function App() {
               <main style={{paddingTop: "90px"}} className={`bg-${localeContextValue.theme === 'dark' ? 'white' : 'dark'}`}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route path="/menus" element={<MenusPage />} />
                   <Route path="/notes" element={<NotesPage />} />
                   <Route path="/archived" element={<ArchivedPage />} />
                   <Route path="notes/:id" element={<DetailPage />} />

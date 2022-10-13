@@ -7,9 +7,17 @@ import LoginImg from '../assets/images/login_img.png';
 import { login } from '../utils/api';
 import LocaleContext from "../contexts/LocaleContext";
 import Swal from 'sweetalert2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function LoginPage({ loginSuccess }) {
     const { theme, language } = React.useContext(LocaleContext);
+
+    React.useEffect(() => {
+        AOS.init({
+          duration : 2000
+        });
+    }, []);
 
     async function onLogin({ email, password }) {
         const { error, data } = await login({ email, password });
@@ -33,25 +41,26 @@ function LoginPage({ loginSuccess }) {
     }
 
     return (
-        <div>
+        <div style={{marginTop: '75px'}}>
             <div className="container col-xxl-8 px-4 py-5">
                 <div className="row flex-lg-row-reverse align-items-center g-5">
                     <div className="col-10 col-sm-8 col-lg-6">
                         <UrlImage
                         urlImg={LoginImg} 
+                        data-aos="fade-left"
                         alt="Home Ilustration Image" 
                         className="d-block mx-lg-auto img-fluid" 
                         width="450" 
                         height="400" 
                         loading="lazy" />
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" data-aos="fade-down">
                         <div>
                             <h1 className="text-info fw-bold">{language === 'id' ? 'Formulir Masuk' : 'Login Form'}</h1>
                             <p className={`text-${theme === 'dark' ? 'muted' : 'white'}`}>{language === 'id' ? 'Silahkan login untuk melanjutkan ke dalam aplikasi' : 'Please login to continue into the application'}.</p>
                         </div>
                         <LoginInput login={onLogin} />
-                        <p className={`text-${theme === 'dark' ? 'muted' : 'white'} text-center`}>{language === 'id' ? 'Belum punya akun?' : 'Don\'t have an account?'} <Link to='/register'>{language === 'id' ? 'Daftar disini' : 'Register here'}</Link></p>
+                        <p className={`text-${theme === 'dark' ? 'muted' : 'white'} text-center text-info`}>{language === 'id' ? 'Belum punya akun?' : 'Don\'t have an account?'} <Link to='/register' className="text-info">{language === 'id' ? 'Daftar disini' : 'Register here'}</Link></p>
                     </div>
                 </div>
             </div>
