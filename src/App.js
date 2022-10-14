@@ -1,38 +1,38 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Footer from './components/footer/Footer';
-import AppBar from './components/header/AppBar';
-import AddNotePage from './pages/AddNotePage';
-import DetailPage from './pages/DetailPage';
-import PageNotFound from './pages/Error404';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import { getUserLogged, putAccessToken } from './utils/api';
-import LocaleContext from './contexts/LocaleContext';
-import AppBarUserAuthentication from './components/header/AppBarUserAuthentication';
-import NotesPage from './pages/NotesPage';
-import ArchivedPage from './pages/ArchivedPage';
-import Swal from 'sweetalert2';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Footer from "./components/footer/Footer";
+import AppBar from "./components/header/AppBar";
+import AddNotePage from "./pages/AddNotePage";
+import DetailPage from "./pages/DetailPage";
+import PageNotFound from "./pages/Error404";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import { getUserLogged, putAccessToken } from "./utils/api";
+import LocaleContext from "./contexts/LocaleContext";
+import AppBarUserAuthentication from "./components/header/AppBarUserAuthentication";
+import NotesPage from "./pages/NotesPage";
+import ArchivedPage from "./pages/ArchivedPage";
+import Swal from "sweetalert2";
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
-  const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'dark');
-  const [language, setLanguage] = React.useState(localStorage.getItem('language') || 'en');
+  const [theme, setTheme] = React.useState(localStorage.getItem("theme") || "dark");
+  const [language, setLanguage] = React.useState(localStorage.getItem("language") || "en");
 
   const toggleTheme = () => {
     setTheme((prevState) => {
-      const newTheme = prevState === 'dark' ? 'white' : 'dark';
-      localStorage.setItem('theme', newTheme);
+      const newTheme = prevState === "dark" ? "white" : "dark";
+      localStorage.setItem("theme", newTheme);
       return newTheme;
     })
   }
 
   const toggleLanguage = () => {
     setLanguage((prevState) => {
-      const newLanguage = prevState === 'en' ? 'id' : 'en';
-      localStorage.setItem('language', newLanguage);
+      const newLanguage = prevState === "en" ? "id" : "en";
+      localStorage.setItem("language", newLanguage);
       return newLanguage;
     })
   };
@@ -61,21 +61,21 @@ function App() {
 
   function onLogout() {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You want to log out?",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, I want to log out!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I want to log out!"
     }).then((result) => {
       if (result.isConfirmed) {
         setAuthedUser(null);
-        putAccessToken('');
+        putAccessToken("");
         Swal.fire(
-          'Log out!',
-          'You have successfully logged out.',
-          'success'
+          "Log out!",
+          "You have successfully logged out.",
+          "success"
         )
       }
     })
@@ -92,15 +92,15 @@ function App() {
         if (authedUser === null) {
           return (
             <LocaleContext.Provider value={localeContextValue}>
-              <div className={`bg-${localeContextValue.theme === 'white' ? 'dark' : 'white'}`}>
+              <div className={`bg-${localeContextValue.theme === "white" ? "dark" : "white"}`}>
                 <header>
                   <AppBarUserAuthentication />
                 </header>
-                <main className='d-flex aligns-items-center justify-content-center mt-5'>
-                    <Routes>
-                      <Route path='/*' element={<LoginPage loginSuccess={onLoginSuccess} />} />
-                      <Route path='/register' element={<RegisterPage />} />
-                    </Routes>
+                <main className="d-flex aligns-items-center justify-content-center mt-5">
+                  <Routes>
+                    <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccess} />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                  </Routes>
                 </main>
               </div>
             </LocaleContext.Provider>
@@ -109,11 +109,11 @@ function App() {
     
         return (
           <LocaleContext.Provider value={localeContextValue}>
-            <div className={`bg-${localeContextValue.theme === 'dark' ? 'white' : 'dark'} `}>
+            <div className={`bg-${localeContextValue.theme === "dark" ? "white" : "dark"} `}>
               <header>
                 <AppBar logout={onLogout} name={authedUser.name} />
               </header>
-              <main style={{paddingTop: "90px"}} className={`bg-${localeContextValue.theme === 'dark' ? 'white' : 'dark'}`}>
+              <main style={{paddingTop: "90px"}} className={`bg-${localeContextValue.theme === "dark" ? "white" : "dark"}`}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/notes" element={<NotesPage />} />
@@ -123,7 +123,7 @@ function App() {
                   <Route path="/*" element={<PageNotFound />} />
                 </Routes>
               </main>
-              <footer className={`text-center text-lg-start bg-${localeContextValue.theme === 'dark' ? 'light' : 'dark'} text-muted mb-0`}>
+              <footer className={`text-center text-lg-start bg-${localeContextValue.theme === "dark" ? "light" : "dark"} text-muted mb-0`}>
                 <Footer />
               </footer>
             </div>
@@ -135,3 +135,4 @@ function App() {
 }
 
 export default App;
+
