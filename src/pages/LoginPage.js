@@ -65,7 +65,7 @@ function LoginPage({ loginSuccess }) {
             <p
              className={`text-${theme === "dark" ? "muted" : "white"} text-center text-info`}>
               {language === "id" ? "Belum punya akun?" : "Don't have an account?"}
-               <Link to="/register" className="text-info">{language === "id" ? "Daftar disini" : "Register here"}</Link></p>
+               <Link to="/register" className="text-info">{language === "id" ? " Daftar disini" : " Register here"}</Link></p>
           </div>
         </div>
       </div>

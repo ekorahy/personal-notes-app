@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import LocaleContext from "../../contexts/LocaleContext";
 import useInput from "../../hooks/useInput";
+import Swal from "sweetalert2";
 
 function RegisterInput({ register }) {
   const [name, onNameChange] = useInput("");
@@ -13,7 +14,11 @@ function RegisterInput({ register }) {
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    password !== confirmPassword ? alert("Password must same !!!")
+    password !== confirmPassword ? 
+      Swal.fire({
+        icon: "error",
+        title: "Passwords must be the same",
+      })
     : register({
       name: name,
       email: email,
