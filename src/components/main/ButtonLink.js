@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 function ButtonLink({ link, label, icon, ...rest }) {
     return (
         <>
-            <Link to={link}>
-                <button {...rest}>{label} {icon}</button>
+            <Link to={link} preventScrollReset={true}>
+                <button {...rest}>{icon} {label}</button>
             </Link>
         </>
     );

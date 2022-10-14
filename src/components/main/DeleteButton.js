@@ -36,7 +36,7 @@ function DeleteButton({ id, onDelete }) {
 }
 
 DeleteButton.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
 }
 

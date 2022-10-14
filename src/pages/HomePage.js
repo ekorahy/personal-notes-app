@@ -14,11 +14,11 @@ import 'aos/dist/aos.css';
 function HomePage() {
     const { theme, language } = React.useContext(LocaleContext);
 
-    React.useEffect(() => {
-        AOS.init({
-          duration : 2000
-        });
-    }, []);
+        React.useEffect(() => {
+            AOS.init({
+            duration : 2000
+            });
+        }, []);
 
     return (
         <>
@@ -42,13 +42,11 @@ function HomePage() {
                     >{language === 'id' ? 'Selamat datang di ' : 'Welcome to '}<span className="text-info">{language === 'id' ? 'Aplikasi Catatan Pribadi' : 'Personal Notes App'}</span></h2>
                     <p data-aos="fade-down" tabIndex={0} className={`fw-lighter fs-6 text-${theme}`}>
                         {language === 'id' ? 'Memudahkan Anda untuk menyimpan dan mengelola catatan pribadi' : 'Makes it easier for you to store and manage your personal notes'}.</p>
-                    <ButtonLink
-                    link="/menus"
+                    <a
+                    href="#menusSection"
                     data-aos="fade-down"
-                    label={language === 'id' ? 'Mulai' : 'Get Started'} 
-                    icon={<HiArrowRight />} 
                     className="btn btn-info px-4 py-2 text-white fw-400" 
-                    style={{padding: "10px 0"}} />
+                    style={{padding: "10px 0"}} >{language === 'id' ? 'Mulai' : 'Get Started'} <HiArrowRight /></a>
                 </div>
             </div>
         </div>

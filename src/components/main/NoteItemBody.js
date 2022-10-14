@@ -1,5 +1,5 @@
 import React from "react";
-import { showFormattedDate } from "../../utils/index";
+import { showFormattedDate } from "../../utils/changeFormatDate";
 import PropTypes from "prop-types";
 import LocaleContext from "../../contexts/LocaleContext";
 

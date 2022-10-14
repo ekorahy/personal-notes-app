@@ -1,5 +1,5 @@
 import React from "react";
-import { showFormattedDate } from "../../utils/index";
+import { showFormattedDate } from "../../utils/changeFormatDate";
 import ArchiveButton from "./ArchiveButton";
 import DeleteButton from "./DeleteButton";
 import UnarchiveButton from "./UnarchiveButton";
@@ -25,14 +25,14 @@ function NoteDetail({ id, title, createdAt, body, archived, onDelete, onArchive,
 }
 
 NoteDetail.propTypes = {
-    id: PropTypes.string,
-    title: PropTypes.string,
-    createdAt: PropTypes.string,
-    body: PropTypes.string,
-    archived: PropTypes.bool,
-    onDelete: PropTypes.func,
-    onArchive: PropTypes.func,
-    onUnarchive: PropTypes.func,
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    archived: PropTypes.bool.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onArchive: PropTypes.func.isRequired,
+    onUnarchive: PropTypes.func.isRequired,
 }
 
 export default NoteDetail;
