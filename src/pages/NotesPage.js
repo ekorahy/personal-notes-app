@@ -57,7 +57,7 @@ function NotesPage() {
           }
             <ButtonLink 
              link={"/add"}
-             className="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
+             classLink="btn btn-info floating-button-right p-3 mx-2 text-white fw-400" 
              icon={<MdAdd style={{fontSize: "24px"}} />} 
              title={language === "id" ? "Tambah catatan baru" : "Add new note"} />
         </div>

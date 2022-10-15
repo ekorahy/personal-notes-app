@@ -26,41 +26,40 @@ function HomePage() {
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div className="col-10 col-sm-8 col-lg-6">
                 <UrlImage
-                urlImg={HomeImg} 
-                data-aos="fade-left"
-                alt="Home Ilustration Image" 
-                className="d-block mx-lg-auto img-fluid" 
-                width="700" 
-                height="500" 
-                loading="lazy" />
+                 urlImg={HomeImg} 
+                 animationImg="fade-left"
+                 altImg="Home Ilustration Image" 
+                 classImg="d-block mx-lg-auto img-fluid" 
+                 width="700" 
+                 height="500" />
             </div>
             <div className="col-lg-6">
-                <h2
+              <h2
                 data-aos="fade-down"
                 tabIndex={0} 
                 className={`display-5 fw-bold lh-1 mb-3 text-${theme}`}
-                >{language === "id" ? "Selamat datang di " : "Welcome to "}<span className="text-info">{language === "id" ? "Aplikasi Catatan Pribadi" : "Personal Notes App"}</span></h2>
-                <p data-aos="fade-down" tabIndex={0} className={`fw-lighter fs-6 text-${theme}`}>
-                    {language === "id" ? "Memudahkan Anda untuk menyimpan dan mengelola catatan pribadi" : "Makes it easier for you to store and manage your personal notes"}.</p>
-                <a
-                href="#menusSection"
-                data-aos="fade-down"
-                className="btn btn-info px-4 py-2 text-white fw-400" 
-                style={{padding: "10px 0"}} >{language === "id" ? "Mulai" : "Get Started"} <HiArrowRight /></a>
+                >{language === "id" ? "Selamat datang di " : "Welcome to "}<span className="text-info">{language === "id" ? "Aplikasi Catatan Pribadi" : "Personal Notes App"}</span>
+              </h2>
+              <p data-aos="fade-down" tabIndex={0} className={`fw-lighter fs-6 text-${theme}`}>
+                {language === "id" ? "Memudahkan Anda untuk menyimpan dan mengelola catatan pribadi" : "Makes it easier for you to store and manage your personal notes"}.</p>
+              <a
+               href="#menusSection"
+               data-aos="fade-down"
+               className="btn btn-info px-4 py-2 text-white fw-400" 
+               style={{padding: "10px 0"}} >{language === "id" ? "Mulai" : "Get Started"} <HiArrowRight /></a>
             </div>
         </div>
     </div>
-    <div id="menusSection" className="container col-xxl-8 px-4 py-5">
+    <div id="menusSection" className="container col-xxl-8 px-4">
         <div className="row flex-lg-row align-items-center g-5 py-5">
-          <div className="col-10 col-sm-8 col-lg-6">
+          <div className="col-10 col-sm-8 col-lg-6 mx-auto">
             <UrlImage
              urlImg={MenusImg} 
-             data-aos="fade-right"
-             alt="Home Ilustration Image" 
-             className="d-block mx-lg-auto img-fluid" 
+             animationImg="fade-right"
+             altImg="Menus Ilustration Image" 
+             classImg="d-block mx-lg-auto img-fluid" 
              width="350" 
-             height="350" 
-             loading="lazy" />
+             height="350" />
           </div>
           <div className="col-lg-6">
             <p tabIndex={0} data-aos="fade-down" className={`fw-lighter fs-6 text-center mt-3 fw-bold text-${theme}`}>{language === "id" ?  "Pilih Menu" : "Choose Menu"}</p>
@@ -68,32 +67,26 @@ function HomePage() {
               <div className="my-3">
                 <ButtonLink
                  link="/add" 
-                 data-aos="fade-down"
+                 animationLink="fade-down"
                  label={language === "id" ? "Tambah catatan baru" : "Add new note"}
                  icon={<AiOutlineFileAdd style={{fontSize: "20px"}} />} 
-                 className="btn btn-success px-5 w-75 fw-400" 
-                 style={{padding: "10px 0", margin: "0 10px 0 0"}} 
-                 title={language === "id" ? "Tambah catatan baru" : "Add new note"} />
+                 classLink="btn btn-success px-2 py-2 w-75 fw-400" />
               </div>
               <div className="my-3">
                 <ButtonLink
                  link="/notes" 
-                 data-aos="fade-down"
+                 animationLink="fade-down"
                  label={language === "id" ? "Lihat catatan" : "View notes"}
                  icon={<CgNotes style={{fontSize: "20px"}} />} 
-                 className="btn btn-outline-info px-5 w-75 fw-400" 
-                 style={{padding: "10px 0", margin: "0 10px 0 0"}} 
-                 title={language === "id" ? "Lihat catatan" : "View notes"} />
+                 classLink="btn btn-outline-info px-2 py-2 w-75 fw-400" />
               </div>
               <div className="my-3">
                 <ButtonLink
                  link="/archived" 
-                 data-aos="fade-down"
+                 animationLink="fade-down"
                  label={language === "id" ? "Lihat arsip" : "View archived"}
                  icon={<RiArchiveDrawerLine style={{fontSize: "20px"}} />} 
-                 className="btn btn-outline-warning px-5 w-75 fw-400" 
-                 style={{padding: "10px 0", margin: "0 10px 0 0"}} 
-                 title={language === "id" ? "Lihat arsip" : "View archived"} />
+                 classLink="btn btn-outline-warning px-2 py-2 w-75 fw-400" />
               </div>
             </div>
           </div>

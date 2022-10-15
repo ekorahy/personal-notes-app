@@ -47,12 +47,11 @@ function LoginPage({ loginSuccess }) {
           <div className="col-10 col-sm-8 col-lg-6">
             <UrlImage
              urlImg={LoginImg} 
-             data-aos="fade-left"
-             alt="Home Ilustration Image" 
-             className="d-block mx-lg-auto img-fluid" 
+             animationImg="fade-left"
+             altImg="Login Ilustration Image" 
+             classImg="d-block mx-lg-auto img-fluid" 
              width="450" 
-             height="400" 
-             loading="lazy" />
+             height="400" />
           </div>
           <div className="col-lg-6" data-aos="fade-down">
             <div>

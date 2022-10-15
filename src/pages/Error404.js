@@ -24,20 +24,17 @@ function PageNotFound() {
        data-aos="fade-down">- {language === "id" ? "Halaman Tidak Ditemukan" : "Page Not Found"} -</p>
       <UrlImage
        urlImg={Error404} 
-       data-aos="fade-down" 
-       alt="Home Ilustration Image" 
-       className="d-block mx-lg-auto img-fluid mx-auto" 
-       width="500px" 
-       loading="lazy" />
+       animationImg="fade-down" 
+       altImg="Error 404 Ilustration Image" 
+       classImg="d-block mx-lg-auto img-fluid mx-auto" 
+       width="500px"
+       height="500px" />
       <div className="d-flex justify-content-center mt-3 mb-5">
         <ButtonLink
          link="/" 
-         data-aos="fade-down" 
-         data-aos-easing="linear" 
-         data-aos-duration="1500"
+         animationLink="fade-down"
          label={language === "id" ? "Kembali ke beranda" : "Back to Home"} 
-         className="btn btn-link text-info"
-         title="Add New Note" />
+         classLink="btn btn-link text-info" />
       </div>
     </div>
   );
