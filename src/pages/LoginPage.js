@@ -7,17 +7,9 @@ import LoginImg from "../assets/images/login_img.png";
 import { login } from "../utils/api";
 import LocaleContext from "../contexts/LocaleContext";
 import Swal from "sweetalert2";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function LoginPage({ loginSuccess }) {
   const { theme, language } = React.useContext(LocaleContext);
-
-  React.useEffect(() => {
-    AOS.init({
-      duration : 2000
-    });
-  }, []);
 
   async function onLogin({ email, password }) {
     const { error, data } = await login({ email, password });
@@ -46,14 +38,13 @@ function LoginPage({ loginSuccess }) {
         <div className="row flex-lg-row-reverse align-items-center g-5">
           <div className="col-10 col-sm-8 col-lg-6">
             <UrlImage
-             urlImg={LoginImg} 
-             animationImg="fade-left"
+             urlImg={LoginImg}
              altImg="Login Ilustration Image" 
              classImg="d-block mx-lg-auto img-fluid" 
              width="450" 
              height="400" />
           </div>
-          <div className="col-lg-6" data-aos="fade-down">
+          <div className="col-lg-6">
             <div>
               <h1 className="text-info fw-bold">{language === "id" ? "Formulir Masuk" : "Login Form"}</h1>
               <p
@@ -63,8 +54,8 @@ function LoginPage({ loginSuccess }) {
             <LoginInput login={onLogin} />
             <p
              className={`text-${theme === "dark" ? "muted" : "white"} text-center text-info`}>
-              {language === "id" ? "Belum punya akun?" : "Don't have an account?"}
-               <Link to="/register" className="text-info">{language === "id" ? " Daftar disini" : " Register here"}</Link></p>
+              {language === "id" ? "Belum punya akun" : "Don't have an account"}
+              ? <Link to="/register" className="text-info">{language === "id" ? "Daftar disini" : "Register here"}</Link></p>
           </div>
         </div>
       </div>

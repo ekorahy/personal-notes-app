@@ -6,18 +6,10 @@ import RegisterImg from "../assets/images/register_img.png";
 import { register } from "../utils/api";
 import LocaleContext from "../contexts/LocaleContext";
 import Swal from "sweetalert2";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function RegisterPage() {
   const navigate = useNavigate();
   const { theme, language } = React.useContext(LocaleContext);
-
-  React.useEffect(() => {
-    AOS.init({
-      duration : 2000
-    });
-  }, []);
 
   async function onRegisterHandler(user) {
     const { error } = await register(user);
@@ -44,14 +36,13 @@ function RegisterPage() {
         <div className="row flex-lg-row align-items-center g-5">
           <div className="col-10 col-sm-8 col-lg-6">
             <UrlImage
-             urlImg={RegisterImg} 
-             animationImg="fade-right"
+             urlImg={RegisterImg}
              altImg="Register Ilustration Image" 
              classImg="d-block mx-lg-auto img-fluid" 
              width="450" 
              height="400" />
           </div>
-          <div className="col-lg-6" data-aos="fade-down">
+          <div className="col-lg-6">
             <div>
               <h1 className="text-info fw-bold">{language === "id" ? "Formulir Pendaftaran" : "Register Form"}</h1>
               <p
